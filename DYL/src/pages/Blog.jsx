@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Clock, ArrowRight, Search, X } from 'lucide-react';
-import axios from 'axios';
+import api from '../utils/api';
 
 const Blog = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -13,7 +13,7 @@ const Blog = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const res = await axios.get('/api/posts');
+                const res = await api.get('/api/posts');
                 if (Array.isArray(res.data)) {
                     setPosts(res.data);
                 } else {

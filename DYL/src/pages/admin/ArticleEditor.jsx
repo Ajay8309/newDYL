@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save, Loader, Upload, X } from 'lucide-react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const ArticleEditor = () => {
     const { id } = useParams();
@@ -34,7 +34,7 @@ const ArticleEditor = () => {
 
     const fetchArticle = async () => {
         try {
-            const res = await axios.get(`/api/posts/${id}`);
+            const res = await api.get(`/api/posts/${id}`);
             setFormData(res.data);
             if (res.data.image) {
                 setImagePreview(res.data.image);
@@ -74,7 +74,7 @@ const ArticleEditor = () => {
         uploadData.append('image', imageFile);
 
         try {
-            const res = await axios.post('/api/upload', uploadData, {
+            const res = await api.post('/api/upload', uploadData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -106,9 +106,9 @@ const ArticleEditor = () => {
             };
 
             if (isEditing) {
-                await axios.put(`/api/posts/${id}`, postData, config);
+                await api.put(`/api/posts/${id}`, postData, config);
             } else {
-                await axios.post('/api/posts', postData, config);
+                await api.post('/api/posts', postData, config);
             }
             navigate('/admin/dashboard');
         } catch (error) {

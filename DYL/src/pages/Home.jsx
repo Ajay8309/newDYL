@@ -245,13 +245,13 @@ const Home = () => {
             {/* ═══════════════════════════════════════════
           2 · HOW IT WORKS (Reordered)
       ═══════════════════════════════════════════ */}
-            <section className="py-24">
+            <section className="py-16">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-10"
                     >
                         <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
                             How It <span className="text-[var(--color-secondary)]">Works</span>
@@ -310,9 +310,9 @@ const Home = () => {
             {/* ═══════════════════════════════════════════
           3 · SCIENCE + SPIRITUALITY (New Section)
       ═══════════════════════════════════════════ */}
-            <section className="py-24 relative overflow-hidden">
+            <section className="py-16 relative overflow-hidden">
                 <div className="container mx-auto px-6 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="grid lg:grid-cols-2 gap-10 items-center">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -360,7 +360,7 @@ const Home = () => {
                         </motion.div>
                     </div>
 
-                    <div className="mt-20 grid md:grid-cols-2 gap-8">
+                    <div className="mt-12 grid md:grid-cols-2 gap-8">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -393,18 +393,18 @@ const Home = () => {
                 </div>
             </section>
 
-            <div className="section-divider" />
+
 
             {/* ═══════════════════════════════════════════
           4 · PATTERN THEORY (Circle vs. Spiral)
       ═══════════════════════════════════════════ */}
-            <section className="py-24 bg-black/20">
+            <section className="py-16 bg-black/20">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-10"
                     >
                         <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
                             What are <span className="text-[var(--color-secondary)]">Patterns</span>?
@@ -414,7 +414,7 @@ const Home = () => {
                         </p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+                    <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
                         {/* Circle */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -460,13 +460,13 @@ const Home = () => {
             {/* ═══════════════════════════════════════════
           5 · CONSCIOUSNESS SCALE
       ═══════════════════════════════════════════ */}
-            <section ref={scrollRef} className="py-24 md:py-32">
+            <section ref={scrollRef} className="py-16 md:py-20">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-10"
                     >
                         <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
                             Map of <span className="text-[var(--color-secondary)]">Consciousness</span>
@@ -537,78 +537,18 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════════
-          3 · PATTERN THEORY  (Circle vs. Spiral)
-      ═══════════════════════════════════════════ */}
-            <section className="py-24 bg-black/20">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-16"
-                    >
-                        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-                            What are <span className="text-[var(--color-secondary)]">Patterns</span>?
-                        </h2>
-                        <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto">
-                            How to identify them? How to break them?
-                        </p>
-                    </motion.div>
 
-                    <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
-                        {/* Circle */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-center glass rounded-2xl p-10"
-                        >
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-                                className="w-40 h-40 md:w-56 md:h-56 rounded-full border-2 border-dashed border-white/20 mx-auto mb-8 flex items-center justify-center"
-                            >
-                                <div className="w-3 h-3 bg-white/40 rounded-full" />
-                            </motion.div>
-                            <h3 className="text-3xl font-serif font-bold mb-4">Life as a Circle</h3>
-                            <p className="text-[var(--color-text-muted)] leading-relaxed">
-                                Stuck in core beliefs &amp; karma. Repeating the same relationship dynamics,
-                                financial blocks, and emotional triggers. The scenery changes, but the script stays the same.
-                            </p>
-                        </motion.div>
-
-                        {/* Spiral (3D UpwardSpiral Component) */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="text-center glass rounded-2xl p-10 border-[var(--color-secondary)]/20"
-                        >
-                            <div className="w-40 h-40 md:w-56 md:h-56 mx-auto mb-8 relative flex items-center justify-center">
-                                <UpwardSpiral />
-                            </div>
-                            <h3 className="text-3xl font-serif font-bold mb-4 text-[var(--color-secondary)]">Life as a Spiral</h3>
-                            <p className="text-[var(--color-text-muted)] leading-relaxed">
-                                Higher awareness, maturity, and easier decision-making.
-                                You revisit the same themes but from an elevated perspective — with growth, not repetition.
-                            </p>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
 
             {/* ═══════════════════════════════════════════
           4 · TESTIMONIALS CAROUSEL
       ═══════════════════════════════════════════ */}
-            <section className="py-24">
+            <section className="py-16">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-16"
+                        className="text-center mb-10"
                     >
                         <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
                             Client <span className="text-[var(--color-secondary)]">Transformations</span>
@@ -748,7 +688,7 @@ const Home = () => {
             {/* ═══════════════════════════════════════════
            5 · INSTAGRAM FEED (Curated Gallery)
        ═══════════════════════════════════════════ */}
-            <section className="py-24 overflow-hidden relative">
+            <section className="py-16 overflow-hidden relative">
                 {/* Background decorative glow */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[300px] bg-[var(--color-secondary)]/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -841,7 +781,7 @@ const Home = () => {
             {/* ═══════════════════════════════════════════
            6 · FAQ (Restored)
        ═══════════════════════════════════════════ */}
-            < section className="py-24" >
+            < section className="py-16" >
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

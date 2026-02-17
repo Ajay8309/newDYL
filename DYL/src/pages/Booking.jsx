@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import { Check, Calendar, Upload, QrCode, Clock, Shield, Sparkles, Heart, Zap, X, Loader } from 'lucide-react';
 import qrCodeImg from '../assets/qr.png';
 
@@ -126,7 +126,7 @@ const Booking = () => {
         uploadData.append('image', file);
 
         try {
-            const res = await axios.post('/api/upload', uploadData, {
+            const res = await api.post('/api/upload', uploadData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
             setScreenshotUrl(res.data);
@@ -159,7 +159,7 @@ const Booking = () => {
         };
 
         try {
-            await axios.post('/api/bookings', bookingData);
+            await api.post('/api/bookings', bookingData);
             setIsSuccess(true);
         } catch (err) {
             console.error("Booking error:", err);

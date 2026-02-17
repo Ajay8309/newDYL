@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Edit, Trash2, LogOut, Check, X, Eye, FileText, ClipboardList, Loader } from 'lucide-react';
-import axios from 'axios';
+import api from '../../utils/api';
 
 const AdminDashboard = () => {
     const [posts, setPosts] = useState([]);
@@ -26,8 +26,8 @@ const AdminDashboard = () => {
         try {
             const token = localStorage.getItem('token');
             const [postsRes, bookingsRes] = await Promise.all([
-                axios.get('/api/posts'),
-                axios.get('/api/bookings', { headers: { Authorization: token } })
+                api.get('/api/posts'),
+                api.get('/api/bookings', { headers: { Authorization: token } })
             ]);
             setPosts(Array.isArray(postsRes.data) ? postsRes.data : []);
             setBookings(Array.isArray(bookingsRes.data) ? bookingsRes.data : []);
@@ -44,7 +44,7 @@ const AdminDashboard = () => {
         if (window.confirm('Are you sure you want to delete this article?')) {
             try {
                 const token = localStorage.getItem('token');
-                await axios.delete(`/api/posts/${id}`, {
+                await api.delete(`/api/posts/${id}`, {
                     headers: { Authorization: token }
                 });
                 setPosts(posts.filter(post => post._id !== id));
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
     const handleUpdateBookingStatus = async (id, status) => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.patch(`/api/bookings/${id}`, { status }, {
+            const res = await api.patch(`/api/bookings/${id}`, { status }, {
                 headers: { Authorization: token }
             });
             setBookings(bookings.map(b => b._id === id ? res.data : b));

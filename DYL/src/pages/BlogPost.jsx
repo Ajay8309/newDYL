@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, User, Share2, ArrowRight, Zap } from 'lucide-react';
-import axios from 'axios';
+import api from '../utils/api';
 
 const BlogPost = () => {
     const { id } = useParams();
@@ -17,11 +17,11 @@ const BlogPost = () => {
             setLoading(true);
             try {
                 // Fetch single post
-                const res = await axios.get(`/api/posts/${id}`);
+                const res = await api.get(`/api/posts/${id}`);
                 setPost(res.data);
 
                 // Fetch all posts to find related ones (simple client-side filtering for now)
-                const allPostsRes = await axios.get('/api/posts');
+                const allPostsRes = await api.get('/api/posts');
                 const related = allPostsRes.data
                     .filter(p => p.category === res.data.category && p._id !== id)
                     .slice(0, 2);
