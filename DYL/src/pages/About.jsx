@@ -136,13 +136,16 @@ const About = () => {
                         ))}
                     </div>
 
-                    {/* Former leadership note */}
-                    <div className="flex items-center gap-4 p-5 border border-[var(--color-secondary)]/12 bg-[var(--color-secondary)]/[0.02]">
-                        <div className="h-[30px] w-px bg-[var(--color-secondary)] opacity-50 shrink-0" />
-                        <p className="text-[var(--color-text-muted)] text-sm m-0">
-                            Former leadership roles at{' '}
-                            <strong className="text-[var(--color-cream)] font-normal">Amazon · Uber · Zomato</strong>
-                        </p>
+                    {/* Former leadership */}
+                    <div className="p-5 border border-[var(--color-secondary)]/12 bg-[var(--color-secondary)]/[0.02]">
+                        <div className="text-[0.5rem] tracking-[0.35em] text-[var(--color-text-muted)] uppercase mb-3 text-center">Former Leadership At</div>
+                        <div className="flex items-center justify-center gap-6 md:gap-10">
+                            {['Amazon', 'Uber', 'Zomato'].map(name => (
+                                <span key={name} className="font-serif text-lg md:text-xl font-semibold text-white/30 tracking-[0.15em] uppercase select-none">
+                                    {name}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 </motion.div>
             </section>
@@ -164,28 +167,6 @@ const About = () => {
                         — Aashna Ahuja
                     </cite>
                 </motion.blockquote>
-            </section>
-
-            {/* ══ COMPANY MARQUEE ═════════════════════════════════════ */}
-            <section className="py-14 border-b border-white/5 overflow-hidden">
-                <div className="text-center text-[0.55rem] tracking-[0.45em] text-[var(--color-text-muted)] mb-6 uppercase font-bold">
-                    FORMER LEADERSHIP AT
-                </div>
-                <div className="overflow-hidden relative">
-                    <div className="absolute left-0 top-0 bottom-0 w-[12%] bg-gradient-to-r from-[var(--color-primary)] to-transparent z-[2]" />
-                    <div className="absolute right-0 top-0 bottom-0 w-[12%] bg-gradient-to-l from-[var(--color-primary)] to-transparent z-[2]" />
-                    <motion.div
-                        animate={{ x: ['0%', '-50%'] }}
-                        transition={{ repeat: Infinity, ease: 'linear', duration: 22 }}
-                        className="flex gap-20 whitespace-nowrap w-max py-2"
-                    >
-                        {['AMAZON', 'UBER', 'ZOMATO', 'TANASH HOMES', 'AMAZON', 'UBER', 'ZOMATO', 'TANASH HOMES'].map((c, i) => (
-                            <span key={i} className="font-serif text-[1.6rem] font-semibold text-white/10 tracking-[0.3em] select-none">
-                                {c}
-                            </span>
-                        ))}
-                    </motion.div>
-                </div>
             </section>
 
             {/* ══ JOURNEY TIMELINE ════════════════════════════════════ */}
