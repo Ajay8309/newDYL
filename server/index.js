@@ -5,6 +5,9 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Route imports
 import authRoutes from './routes/auth.js';
 import postRoutes from './routes/posts.js';
@@ -35,10 +38,23 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/images', imageRoutes);
 app.use('/api/bookings', bookingRoutes);
 
-// Base route
-app.get('/', (req, res) => {
-    res.send('Decode Your Life Style API is running...');
-});
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static(path.join(__dirname, '../DYL/dist')));
+
+    app.get('*', (req, res) => {
+        // Skip API routes
+        if (req.path.startsWith('/api')) {
+            return res.status(404).json({ message: 'API endpoint not found' });
+        }
+        res.sendFile(path.resolve(__dirname, '../DYL', 'dist', 'index.html'));
+    });
+} else {
+    app.get('/', (req, res) => {
+        res.send('Decode Your Life Style API is running...');
+    });
+}
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
