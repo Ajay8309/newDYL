@@ -331,7 +331,8 @@ const About = () => {
                         <motion.button
                             whileHover={{ scale: 1.05, boxShadow: '0 16px 50px rgba(255, 255, 255, 0.3)' }}
                             whileTap={{ scale: 0.95 }}
-                            className="bg-black px-14 py-4 text-sm font-bold tracking-[0.3em] uppercase border-2 border-[var(--color-secondary)] cursor-pointer text-[var(--color-cream)]"
+                            style={{ border: '1px solid var(--color-secondary)' }}
+                            className="bg-black px-14 py-4 text-sm font-bold tracking-[0.3em] uppercase cursor-pointer text-[var(--color-cream)]"
                         >
                             Book My Slot
                         </motion.button>
