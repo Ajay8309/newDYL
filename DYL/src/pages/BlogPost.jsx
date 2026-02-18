@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Clock, Calendar, User, Share2, ArrowRight, Zap } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Share2 } from 'lucide-react';
 import api from '../utils/api';
 
 const BlogPost = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
     const [post, setPost] = useState(null);
     const [relatedPosts, setRelatedPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch Post and Related
     useEffect(() => {
         const fetchPostData = async () => {
             setLoading(true);
             try {
-                // Fetch single post
                 const res = await api.get(`/api/posts/${id}`);
                 setPost(res.data);
 
-                // Fetch all posts to find related ones (simple client-side filtering for now)
                 const allPostsRes = await api.get('/api/posts');
                 const related = allPostsRes.data
                     .filter(p => p.category === res.data.category && p._id !== id)
                     .slice(0, 2);
                 setRelatedPosts(related);
-
             } catch (error) {
                 console.error("Error fetching post:", error);
                 setPost(null);
@@ -35,14 +30,25 @@ const BlogPost = () => {
                 window.scrollTo(0, 0);
             }
         };
-
         fetchPostData();
     }, [id]);
+
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return null;
+        if (imagePath.includes('localhost:5001') || imagePath.includes('localhost:5000')) {
+            const baseUrl = api.defaults.baseURL || '';
+            const parts = imagePath.split('/api/');
+            if (parts.length > 1) return `${baseUrl}/api/${parts[1]}`;
+        }
+        if (imagePath.startsWith('http')) return imagePath;
+        const baseUrl = api.defaults.baseURL || '';
+        return `${baseUrl}${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
+    };
 
     if (loading) {
         return (
             <div className="min-h-screen bg-[var(--color-primary)] flex items-center justify-center">
-                <div className="w-12 h-12 border-4 border-[var(--color-secondary)] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-2 border-[var(--color-secondary)] border-t-transparent rounded-full animate-spin" />
             </div>
         );
     }
@@ -60,98 +66,67 @@ const BlogPost = () => {
         );
     }
 
-    // Helper to get image URL
-    const getImageUrl = (imagePath) => {
-        if (!imagePath) return null;
-
-        // Fix: If the image path is a localhost URL, replace it with the current API base URL
-        if (imagePath.includes('localhost:5001') || imagePath.includes('localhost:5000')) {
-            const baseUrl = api.defaults.baseURL || '';
-            // Split by /api/ to get the relative path
-            const parts = imagePath.split('/api/');
-            if (parts.length > 1) {
-                return `${baseUrl}/api/${parts[1]}`;
-            }
-        }
-
-        if (imagePath.startsWith('http')) return imagePath;
-
-        // Prepend backend URL if it's a relative path
-        const baseUrl = api.defaults.baseURL || '';
-        return `${baseUrl}${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
-    };
-
     return (
-        <div className="min-h-screen bg-[var(--color-primary)] pt-32 pb-20 relative overflow-hidden">
-            {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-secondary)]/5 blur-[120px] rounded-full -z-0" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[var(--color-secondary)]/10 blur-[100px] rounded-full -z-0" />
+        <div className="min-h-screen bg-[var(--color-primary)] pt-32 pb-24">
+            <article className="container mx-auto px-6 max-w-3xl">
 
-            <article className="container mx-auto px-6 max-w-4xl relative z-10">
-                {/* Back Link */}
-                <Link to="/blog" className="inline-flex items-center gap-2 text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-all mb-12 group">
-                    <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                    <span className="text-sm uppercase tracking-widest">Back to Articles</span>
+                {/* Back */}
+                <Link
+                    to="/blog"
+                    className="inline-flex items-center gap-2 text-white/40 hover:text-[var(--color-secondary)] transition-colors mb-12 group"
+                >
+                    <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform" />
+                    <span className="text-xs uppercase tracking-widest">Back to Stories</span>
                 </Link>
 
                 {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-16"
+                    className="mb-10"
                 >
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 backdrop-blur-sm mb-8"
+                    <span
+                        className="text-xs uppercase tracking-widest font-semibold mb-4 block"
+                        style={{ color: "#C9A84C" }}
                     >
-                        <Zap size={14} className="text-[var(--color-secondary)]" />
-                        <span className="text-xs tracking-[0.2em] text-[var(--color-secondary)] uppercase">
-                            {post.category}
-                        </span>
-                    </motion.div>
+                        {post.category}
+                    </span>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-[var(--color-cream)] mb-10 tracking-tight leading-[1.2]"
-                        style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    <h1 className="text-4xl md:text-5xl font-serif font-bold leading-tight mb-8">
                         {post.title}
                     </h1>
 
-                    <div className="flex flex-wrap items-center gap-8 text-sm text-[var(--color-text-muted)] border-b border-white/5 pb-10">
-                        <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-[var(--color-secondary)]/10 flex items-center justify-center text-[var(--color-secondary)] text-xs font-bold border border-[var(--color-secondary)]/20">
-                                AA
-                            </div>
-                            <span className="text-[var(--color-cream)] font-medium">{post.author}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Calendar size={16} className="text-[var(--color-secondary)]/60" />
-                            <span>{post.date}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Clock size={16} className="text-[var(--color-secondary)]/60" />
-                            <span>{post.readTime} read</span>
-                        </div>
-                        <div className="ml-auto">
-                            <button className="flex items-center gap-2 hover:text-[var(--color-secondary)] transition-colors uppercase tracking-widest text-[10px] font-bold">
-                                <Share2 size={16} /> Share Insight
-                            </button>
-                        </div>
+                    <div
+                        className="flex flex-wrap items-center gap-6 text-xs text-white/35 pb-8"
+                        style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+                    >
+                        <span className="flex items-center gap-1.5">
+                            <Calendar size={13} /> {post.date}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                            <Clock size={13} /> {post.readTime}
+                        </span>
+                        <button
+                            onClick={() => navigator.share?.({ title: post.title, url: window.location.href })}
+                            className="ml-auto flex items-center gap-1.5 hover:text-white/70 transition-colors uppercase tracking-widest"
+                        >
+                            <Share2 size={13} /> Share
+                        </button>
                     </div>
                 </motion.div>
 
                 {/* Featured Image */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="mb-12 rounded-3xl overflow-hidden aspect-video relative"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.15 }}
+                    className="mb-12 rounded-xl overflow-hidden aspect-video"
                 >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient} mix-blend-overlay opacity-60`} />
                     <img
                         src={getImageUrl(post.image)}
                         alt={post.title}
                         className="w-full h-full object-cover"
+                        style={{ filter: "brightness(0.85) saturate(0.9)" }}
                     />
                 </motion.div>
 
@@ -159,54 +134,46 @@ const BlogPost = () => {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                    className="prose prose-invert prose-lg max-w-none mb-16"
+                    transition={{ delay: 0.25 }}
+                    className="prose prose-invert prose-lg max-w-none mb-20"
+                    style={{
+                        "--tw-prose-body": "rgba(255,255,255,0.65)",
+                        "--tw-prose-headings": "rgba(255,255,255,0.95)",
+                        "--tw-prose-links": "#C9A84C",
+                        "--tw-prose-bold": "rgba(255,255,255,0.9)",
+                        "--tw-prose-hr": "rgba(255,255,255,0.08)",
+                        "--tw-prose-quotes": "rgba(255,255,255,0.5)",
+                        "--tw-prose-quote-borders": "#C9A84C",
+                    }}
                 >
-                    {/* Render HTML content safely */}
                     <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 </motion.div>
 
-                {/* Author Bio / Call to Action */}
-                <div className="glass rounded-2xl p-8 mb-20 border border-[var(--color-secondary)]/20">
-                    <div className="flex items-start gap-6">
-                        <div className="w-16 h-16 rounded-full bg-[var(--color-secondary)] flex items-center justify-center text-[var(--color-primary)] font-bold text-2xl shrink-0">
-                            AA
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-serif font-bold mb-2">About the Author</h3>
-                            <p className="text-[var(--color-text-muted)] mb-4">
-                                Aashna is a psychic mentor and spiritual guide dedicated to helping people decode their life patterns and step into their power.
-                            </p>
-                            <Link to="/booking">
-                                <span className="text-[var(--color-secondary)] font-bold text-sm uppercase tracking-wider hover:underline">
-                                    Book a Session with Aashna →
-                                </span>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-
                 {/* Related Articles */}
                 {relatedPosts.length > 0 && (
-                    <div className="border-t border-white/10 pt-16">
-                        <h3 className="text-2xl font-serif font-bold mb-8">Related Articles</h3>
-                        <div className="grid md:grid-cols-2 gap-8">
-                            {relatedPosts.map(related => (
-                                <Link to={`/blog/${related._id}`} key={related._id} className="group">
-                                    <div className="glass rounded-xl overflow-hidden h-full hover:border-[var(--color-secondary)]/30 transition-all">
-                                        <div className={`h-48 bg-gradient-to-br ${related.gradient} relative`}>
-                                            <img src={getImageUrl(related.image)} alt={related.title} className="w-full h-full object-cover opacity-50 mix-blend-overlay" />
+                    <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 48 }}>
+                        <h3 className="text-xl font-serif font-bold mb-8">Related Stories</h3>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            {relatedPosts.map((related) => (
+                                <Link to={`/blog/${related._id}`} key={related._id}>
+                                    <div className="group rounded-xl border border-white/8 hover:border-[#C9A84C]/30 bg-white/[0.02] overflow-hidden transition-colors duration-300">
+                                        <div className="aspect-video relative overflow-hidden">
+                                            <img
+                                                src={getImageUrl(related.image)}
+                                                alt={related.title}
+                                                className="w-full h-full object-cover opacity-50 group-hover:opacity-65 group-hover:scale-105 transition-all duration-500"
+                                            />
                                         </div>
-                                        <div className="p-6">
-                                            <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mb-2 block">
+                                        <div className="p-5">
+                                            <span className="text-[10px] uppercase tracking-widest font-semibold mb-2 block" style={{ color: "#C9A84C" }}>
                                                 {related.category}
                                             </span>
-                                            <h4 className="text-xl font-bold mb-3 group-hover:text-[var(--color-secondary)] transition-colors">
+                                            <h4 className="font-serif font-bold text-base leading-snug group-hover:text-[#C9A84C] transition-colors duration-300 mb-2">
                                                 {related.title}
                                             </h4>
-                                            <div className="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
-                                                <Clock size={12} /> {related.readTime}
-                                            </div>
+                                            <span className="text-xs text-white/30 flex items-center gap-1">
+                                                <Clock size={11} /> {related.readTime}
+                                            </span>
                                         </div>
                                     </div>
                                 </Link>
