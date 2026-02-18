@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -39,16 +40,19 @@ app.use('/api/images', imageRoutes);
 app.use('/api/bookings', bookingRoutes);
 
 // Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
+const clientDistPath = path.join(__dirname, '../DYL/dist');
+const clientIndexHtml = path.join(clientDistPath, 'index.html');
+
+if (process.env.NODE_ENV === 'production' && fs.existsSync(clientIndexHtml)) {
     // Set static folder
-    app.use(express.static(path.join(__dirname, '../DYL/dist')));
+    app.use(express.static(clientDistPath));
 
     app.get(/.*/, (req, res) => {
         // Skip API routes
         if (req.path.startsWith('/api')) {
             return res.status(404).json({ message: 'API endpoint not found' });
         }
-        res.sendFile(path.resolve(__dirname, '../DYL', 'dist', 'index.html'));
+        res.sendFile(clientIndexHtml);
     });
 } else {
     app.get('/', (req, res) => {
