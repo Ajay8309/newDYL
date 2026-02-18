@@ -132,14 +132,15 @@ const Home = () => {
             {/* ═══════════════════════════════════════════
           1 · HERO
       ═══════════════════════════════════════════ */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
                 <video
                     autoPlay
                     loop
                     muted
                     playsInline
+                    webkit-playsinline="true"
                     preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover scale-110 z-0"
+                    className="absolute inset-0 w-full h-full object-cover md:scale-110 z-0"
                     style={{ filter: 'brightness(0.45)' }}
                     poster={heroBg}
                 >
@@ -498,8 +499,8 @@ const Home = () => {
                         </p>
                     </motion.div>
 
-                    <div className="max-w-2xl mx-auto relative">
-                        <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-t from-red-900/40 via-sky-800/40 to-[var(--color-secondary)]/60 rounded-full" />
+                    <div className="max-w-2xl mx-auto relative pl-4 md:pl-0">
+                        <div className="absolute left-[22px] md:left-8 top-0 bottom-0 w-1 bg-gradient-to-t from-red-900/40 via-sky-800/40 to-[var(--color-secondary)]/60 rounded-full" />
 
                         <div className="space-y-1">
                             {consciousnessLevels.map((item, index) => (
@@ -510,6 +511,10 @@ const Home = () => {
                                     viewport={{ once: true, margin: '-5%' }}
                                     transition={{ duration: 0.4, delay: index * 0.04 }}
                                     onMouseEnter={() => setHoveredLevel(item.name)}
+                                    onClick={() => setHoveredLevel(hoveredLevel === item.name ? null : item.name)}
+                                    // Removed onMouseLeave to allow toggle on mobile without instant close on tap-off (unless clicking outside, but toggle is better)
+                                    // Actually keeping onMouseLeave for desktop hover behavior is fine, but on mobile click should work.
+                                    // Let's keep mouse events for desktop and click for mobile.
                                     onMouseLeave={() => setHoveredLevel(null)}
                                     className="relative flex items-center gap-6 pl-4 group cursor-help py-1"
                                 >
@@ -545,7 +550,7 @@ const Home = () => {
                                                     animate={{ opacity: 1, x: 0 }}
                                                     exit={{ opacity: 0, x: -10 }}
                                                     transition={{ duration: 0.2 }}
-                                                    className="text-sm text-[var(--color-text-muted)] italic hidden md:inline-block ml-2 border-l border-white/20 pl-3"
+                                                    className="text-sm text-[var(--color-text-muted)] italic inline-block md:ml-2 border-l-2 border-[var(--color-secondary)]/30 md:border-white/20 pl-3 py-1"
                                                 >
                                                     {item.desc}
                                                 </motion.span>
