@@ -255,7 +255,7 @@ const Booking = () => {
                         viewport={{ once: true }}
                         className="glass rounded-3xl overflow-hidden border border-white/5 shadow-2xl shadow-black/20"
                     >
-                        <div className="grid grid-cols-[2fr_1fr_1fr] px-8 py-6 border-b border-white/10 text-xs uppercase tracking-widest text-[var(--color-secondary)] bg-black/20 font-bold">
+                        <div className="hidden md:grid grid-cols-[2fr_1fr_1fr] px-8 py-6 border-b border-white/10 text-xs uppercase tracking-widest text-[var(--color-secondary)] bg-black/20 font-bold">
                             <span>Service</span>
                             <span>Duration</span>
                             <span className="text-right">Fee</span>
@@ -271,7 +271,7 @@ const Booking = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.05 }}
                                     onClick={() => setSelectedService(item)}
-                                    className={`relative grid grid-cols-[2fr_1fr_1fr] px-8 py-6 cursor-pointer group transition-all duration-300 ${selectedService?.service === item.service
+                                    className={`relative flex flex-col md:grid md:grid-cols-[2fr_1fr_1fr] gap-4 md:gap-0 px-6 md:px-8 py-6 cursor-pointer group transition-all duration-300 ${selectedService?.service === item.service
                                         ? 'bg-[var(--color-secondary)]/10'
                                         : 'hover:bg-white/5'
                                         }`}
@@ -282,17 +282,20 @@ const Booking = () => {
                                     <span className={`font-medium transition-colors text-lg ${selectedService?.service === item.service ? 'text-[var(--color-secondary)] font-bold' : 'text-white group-hover:text-[var(--color-secondary)]'}`}>
                                         {item.service}
                                     </span>
-                                    <span className="text-[var(--color-text-muted)] flex items-center gap-2">
-                                        <Clock size={16} className="text-[var(--color-secondary)]/50" /> {item.duration}
-                                    </span>
-                                    <span className="text-right font-sans font-bold text-xl text-[var(--color-secondary)]">{item.price}</span>
+
+                                    <div className="flex md:contents justify-between items-center mt-2 md:mt-0">
+                                        <span className="text-[var(--color-text-muted)] flex items-center gap-2 text-sm md:text-base">
+                                            <Clock size={16} className="text-[var(--color-secondary)]/50" /> {item.duration}
+                                        </span>
+                                        <span className="text-right font-sans font-bold text-xl text-[var(--color-secondary)]">{item.price}</span>
+                                    </div>
                                 </motion.div>
                             ))}
                         </div>
                     </motion.div>
 
                     <p className="text-center text-[var(--color-text-muted)] text-sm mt-6 flex items-center justify-center gap-2">
-                        <span className="animate-pulse">👆</span> Select a service above to proceed with booking
+                        <span className="animate-pulse">👆</span> Proceed with THE booking C0NFIRMATION
                     </p>
                 </section>
 
@@ -336,7 +339,7 @@ const Booking = () => {
                                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
                                 transition={{ type: "spring", damping: 30, stiffness: 300 }}
                                 onClick={(e) => e.stopPropagation()}
-                                className="bg-[var(--color-primary)] w-full max-w-5xl h-[85vh] rounded-[3rem] border border-[var(--color-secondary)]/30 shadow-[0_0_100px_rgba(212,175,55,0.1)] relative overflow-hidden flex flex-col"
+                                className="bg-[var(--color-primary)] w-full max-w-5xl h-[85vh] rounded-2xl md:rounded-[3rem] border border-[var(--color-secondary)]/30 shadow-[0_0_100px_rgba(212,175,55,0.1)] relative overflow-hidden flex flex-col"
                                 style={{ WebkitOverflowScrolling: 'touch' }}
                             >
                                 {/* Decorative Elements */}
@@ -346,13 +349,13 @@ const Booking = () => {
                                 {/* Close Button */}
                                 <button
                                     onClick={() => setSelectedService(null)}
-                                    className="absolute top-6 right-6 p-3 rounded-full bg-white/5 hover:bg-[var(--color-secondary)] hover:text-[var(--color-primary)] text-white/50 transition-all duration-300 z-[60] group border border-white/5"
+                                    className="absolute top-4 right-4 md:top-6 md:right-6 p-3 rounded-full bg-white/5 hover:bg-[var(--color-secondary)] hover:text-[var(--color-primary)] text-white/50 transition-all duration-300 z-[60] group border border-white/5"
                                 >
                                     <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
                                 </button>
 
                                 {/* Scrollable Content Area */}
-                                <div className="flex-1 overflow-y-auto p-8 md:p-12 pb-32 scrollbar-thin scrollbar-thumb-[var(--color-secondary)]/20 scrollbar-track-transparent">
+                                <div className="flex-1 overflow-y-auto p-6 md:p-12 pb-32 scrollbar-thin scrollbar-thumb-[var(--color-secondary)]/20 scrollbar-track-transparent">
                                     <div className="text-center mb-10">
                                         <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] text-[10px] tracking-[0.2em] font-bold uppercase mb-4">
                                             Selected Session
@@ -394,7 +397,7 @@ const Booking = () => {
                                     </div>
 
                                     {/* Step Content Card */}
-                                    <div className="bg-white/[0.02] p-8 md:p-12 rounded-[2rem] min-h-[400px] border border-white/5 relative flex flex-col justify-center">
+                                    <div className="bg-white/[0.02] p-6 md:p-12 rounded-[2rem] min-h-[400px] border border-white/5 relative flex flex-col justify-center">
 
                                         <AnimatePresence mode="wait">
                                             {/* Step 1: QR Code */}

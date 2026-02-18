@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, CheckCircle, Sparkles, Stars, ArrowRight, Shield, Zap, Telescope, Globe, Compass } from 'lucide-react';
-import heroImg from '../../assets/AdobeStock_573925621-scaled.jpeg';
+import heroImg from '../../assets/Signs-of-the-Zodiac-astrology.jpg';
 
 const AstrologyReading = () => {
     const scrollRef = useRef(null);
@@ -59,13 +59,13 @@ const AstrologyReading = () => {
                         className="absolute inset-0 bg-cover bg-center"
                         style={{
                             backgroundImage: `url(${heroImg})`,
-                            filter: 'brightness(0.3) contrast(1.1)'
+                            filter: 'brightness(0.25) contrast(1.1)'
                         }}
                     />
                 </motion.div>
 
                 {/* Gradients */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-primary)]/30 via-transparent to-[var(--color-primary)] z-0" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-primary)]/50 via-transparent to-[var(--color-primary)] z-0" />
 
                 <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center">
                     <Link to="/services" className="inline-flex items-center gap-2 text-white/60 hover:text-[var(--color-secondary)] mb-8 transition-colors w-fit group">
@@ -91,7 +91,7 @@ const AstrologyReading = () => {
                         transition={{ delay: 0.2, duration: 0.8 }}
                         className="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight"
                     >
-                        Vedic <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-300">Astrology</span>
+                        Vedic <span className="text-[var(--color-cream)] italic">Astrology</span>
                     </motion.h1>
 
                     <motion.p

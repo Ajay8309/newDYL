@@ -7,7 +7,7 @@ import { Brain, Heart, Zap, Sparkles, Star, ArrowRight, Award, Users, MapPin } f
 /* ── Data ──────────────────────────────────────────────── */
 const certifications = [
     'Vedic Astrology', 'Vedic Numerology', 'Reiki Healing',
-    'Crystal Healing', 'NLP', 'Tarot', 'Vedic Vastu', 'Akashic Records',
+    'Crystal Healing', 'NLP', 'Tarot', 'Vedic Vastu', 'Akashic Records', 'Integrated Healing',
 ];
 
 const timeline = [
