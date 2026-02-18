@@ -87,7 +87,7 @@ const Info = () => {
 
                 {/* ── FAQ Section ── */}
                 <section className="mb-32 max-w-3xl mx-auto">
-                    <h2 className="text-3xl font-serif font-bold mb-12 text-center text-white">
+                    <h2 className="text-3xl font-serif font-bold mb-12 text-center text-[var(--color-secondary)]">
                         Frequently Asked <span className="text-emerald-400 italic">Questions</span>
                     </h2>
 

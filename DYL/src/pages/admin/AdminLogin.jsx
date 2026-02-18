@@ -123,7 +123,7 @@ const AdminLogin = () => {
                             whileTap={{ scale: 0.98 }}
                             className="group relative w-full overflow-hidden py-4 rounded-2xl font-bold tracking-widest uppercase text-xs transition-all duration-300 disabled:opacity-50"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#A98F47] via-[#A98F47] to-[#A98F47] opacity-100 group-hover:brightness-110 transition-all" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-secondary)] to-[var(--color-secondary)] opacity-100 group-hover:brightness-110 transition-all" />
                             <span className="relative text-[#022C22] flex items-center justify-center gap-2">
                                 {isLoading ? (
                                     <div className="w-5 h-5 border-2 border-[#022C22]/30 border-t-[#022C22] rounded-full animate-spin" />

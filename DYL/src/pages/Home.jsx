@@ -37,7 +37,7 @@ const consciousnessLevels = [
 ];
 
 const tierColors = {
-    peak: 'text-[#A98F47]',
+    peak: 'text-[var(--color-secondary)]',
     high: 'text-emerald-400',
     mid: 'text-sky-400',
     threshold: 'text-amber-400',
@@ -154,7 +154,6 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.6 }}
                         className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] mb-4"
-                        style={{ color: '#E0B23A' }}
                     >
                         Decode Your Life
                     </motion.h1>
@@ -186,7 +185,7 @@ const Home = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(212,175,55,0.4)' }}
                                 whileTap={{ scale: 0.95 }}
-                                style={{ backgroundColor: '#A98F47', color: '#022C22' }}
+                                style={{ backgroundColor: 'var(--color-secondary)', color: '#022C22' }}
                                 className="px-10 py-4 text-lg font-bold tracking-wide rounded-lg transition-all duration-300"
                             >
                                 Book My Slot

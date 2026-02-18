@@ -66,7 +66,7 @@ const Policies = () => {
                                 <div className="p-3 rounded-lg glass text-[var(--color-secondary)]">
                                     {section.icon}
                                 </div>
-                                <h2 className="text-3xl font-serif font-bold text-white">{section.title}</h2>
+                                <h2 className="text-3xl font-serif font-bold text-[var(--color-secondary)]">{section.title}</h2>
                             </div>
 
                             <div className="grid gap-6">

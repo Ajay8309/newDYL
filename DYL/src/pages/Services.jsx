@@ -124,7 +124,7 @@ const Services = () => {
                                 <h3 className="text-2xl font-serif font-bold mb-3">{service.title}</h3>
                                 <p className="text-[var(--color-text-muted)] text-sm leading-relaxed mb-6">{service.description}</p>
                                 <div className="flex gap-3 mt-auto">
-                                    <span className="bg-[var(--color-secondary)] text-[var(--color-primary)] px-5 py-2 text-sm font-bold rounded-lg inline-flex items-center gap-2 group-hover:bg-[#A98F47] transition-colors">
+                                    <span className="bg-[var(--color-secondary)] text-[var(--color-primary)] px-5 py-2 text-sm font-bold rounded-lg inline-flex items-center gap-2 group-hover:brightness-110 transition-colors">
                                         More Info <ArrowRight size={16} />
                                     </span>
                                 </div>

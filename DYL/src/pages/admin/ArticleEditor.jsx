@@ -248,7 +248,7 @@ const ArticleEditor = () => {
                         <button
                             type="submit"
                             disabled={loading || uploading}
-                            style={{ backgroundColor: '#A98F47', color: '#022C22' }}
+                            style={{ backgroundColor: 'var(--color-secondary)', color: '#022C22' }}
                             className="flex items-center gap-2 px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors disabled:opacity-50 cursor-pointer"
                         >
                             {loading || uploading ? <Loader className="animate-spin" size={20} /> : <Save size={20} />}

@@ -29,11 +29,11 @@ const Footer = () => {
                             </div>
                             <div className="flex items-center gap-3">
                                 <MapPin size={16} className="text-[var(--color-secondary)] flex-shrink-0" />
-                                <span className="text-sm text-[var(--color-text-muted)]">Goa, Indore (sessions are held 1:1 in person / via G-meet)</span>
+                                <span className="text-sm text-[var(--color-text-muted)]">Goa, Indore (sessions are held 1:1 in person)</span>
                             </div>
                             <div className="flex items-center gap-3">
                                 <Phone size={16} className="text-[var(--color-secondary)] flex-shrink-0" />
-                                <span className="text-sm text-[var(--color-text-muted)]">WhatsApp Available</span>
+                                <span className="text-sm text-[var(--color-text-muted)]">+91 76669 87712</span>
                             </div>
                             <a
                                 href="https://www.instagram.com/de_codeyourlife/"

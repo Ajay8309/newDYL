@@ -218,7 +218,7 @@ const AkashicRecords = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(169,143,71,0.4)' }}
                                         whileTap={{ scale: 0.98 }}
-                                        className="w-full py-4 rounded-xl font-bold text-white bg-[#A98F47] hover:bg-[#c5a028] shadow-[0_0_20px_rgba(169,143,71,0.2)] transition-all flex items-center justify-center gap-2"
+                                        className="w-full py-4 rounded-xl font-bold text-white bg-[var(--color-secondary)] hover:bg-[var(--color-secondary)] shadow-[0_0_20px_rgba(169,143,71,0.2)] transition-all flex items-center justify-center gap-2"
                                     >
                                         Book Now <ArrowRight size={18} />
                                     </motion.button>
