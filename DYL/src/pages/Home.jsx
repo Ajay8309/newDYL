@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import heroBg from '../assets/hero-bg-new.png';
+import heroVideo from '../assets/heroVid.mp4';
 import { Star, ChevronDown, ChevronUp, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import UpwardSpiral from '../components/UpwardSpiral';
 
@@ -133,10 +134,17 @@ const Home = () => {
           1 · HERO
       ═══════════════════════════════════════════ */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center scale-110"
-                    style={{ backgroundImage: `url(${heroBg})`, filter: 'brightness(0.45)' }}
-                />
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover scale-110 z-0"
+                    style={{ filter: 'brightness(0.45)' }}
+                    poster={heroBg}
+                >
+                    <source src={heroVideo} type="video/mp4" />
+                </video>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-primary)] z-0" />
 
                 <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
