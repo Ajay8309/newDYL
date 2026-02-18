@@ -360,7 +360,7 @@ const Home = () => {
                                     spirituality begins its questions.<br />
                                     Together, they guide us...
                                 </p>
-                                <p className="text-xl font-serif italic text-white/90">
+                                <p className="text-xl font-serif italic text-[var(--color-secondary)]">
                                     Knowledge to knowing.<br />
                                     Knowing to healing.
                                 </p>

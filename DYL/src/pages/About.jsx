@@ -52,7 +52,7 @@ const About = () => {
         <div className="min-h-screen bg-[var(--color-primary)] pt-20">
 
             {/* ══ HERO SPLIT ══════════════════════════════════════════ */}
-            <section className="max-w-[1200px] mx-auto px-8 pt-16 pb-8 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 items-start">
+            <section className="max-w-[1200px] mx-auto px-6 md:px-8 pt-12 md:pt-16 pb-8 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 md:gap-12 items-start">
 
                 {/* Left: Portrait */}
                 <motion.div
@@ -127,11 +127,11 @@ const About = () => {
                     </div>
 
                     {/* Stats row */}
-                    <div className="grid grid-cols-3 gap-px bg-[var(--color-secondary)]/12 border border-[var(--color-secondary)]/12 mt-10 mb-10">
+                    <div className="grid grid-cols-3 gap-px bg-[var(--color-secondary)]/12 border border-[var(--color-secondary)]/12 mt-8 md:mt-10 mb-8 md:mb-10">
                         {[['30+', 'Clients Guided'], ['200+', 'Sessions Held'], ['150+', 'Tanash Guests/yr']].map(([num, lbl]) => (
-                            <div key={lbl} className="text-center py-6 px-4 bg-[var(--color-secondary)]/[0.02]">
-                                <div className="font-serif text-[2.2rem] font-light text-[var(--color-secondary)] leading-none">{num}</div>
-                                <div className="text-[0.65rem] tracking-[0.15em] text-[var(--color-text-muted)] uppercase mt-1.5">{lbl}</div>
+                            <div key={lbl} className="text-center py-4 px-2 md:py-6 md:px-4 bg-[var(--color-secondary)]/[0.02]">
+                                <div className="font-serif text-[1.8rem] md:text-[2.2rem] font-light text-[var(--color-secondary)] leading-none">{num}</div>
+                                <div className="text-[0.55rem] md:text-[0.65rem] tracking-[0.15em] text-[var(--color-text-muted)] uppercase mt-1.5">{lbl}</div>
                             </div>
                         ))}
                     </div>
@@ -139,7 +139,7 @@ const About = () => {
                     {/* Former leadership */}
                     <div className="p-4 border border-[var(--color-secondary)]/12 bg-[var(--color-secondary)]/[0.02]">
                         <div className="text-[0.5rem] tracking-[0.35em] text-[var(--color-text-muted)] uppercase mb-2 text-center">Former Leadership At</div>
-                        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-10">
                             {['Amazon', 'Uber', 'Zomato', 'Tanash Homes', 'Mirashya Homes', 'Viking Homestays'].map(name => (
                                 name === 'Tanash Homes' ? (
                                     <a key={name} href="https://www.tanashhomes.in/" target="_blank" rel="noreferrer" className="font-serif text-lg md:text-xl font-semibold text-white/30 hover:text-[var(--color-secondary)] tracking-[0.15em] uppercase select-none whitespace-nowrap transition-colors">
@@ -175,7 +175,7 @@ const About = () => {
             </section>
 
             {/* ══ JOURNEY TIMELINE ════════════════════════════════════ */}
-            <section className="max-w-[1100px] mx-auto px-8 py-16">
+            <section className="max-w-[1100px] mx-auto px-6 md:px-8 py-12 md:py-16">
                 <div className="text-center mb-12">
                     <GoldDivider label="Her Story" />
                     <h2 className="font-serif font-light text-[clamp(2rem,4vw,3rem)] text-[var(--color-cream)] text-center leading-[1.1]">
@@ -186,54 +186,75 @@ const About = () => {
                 </div>
 
                 <div className="relative">
-                    {/* Vertical spine */}
-                    <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--color-secondary)]/30 to-transparent -translate-x-1/2" />
+                    {/* Vertical spine (Desktop only) */}
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--color-secondary)]/30 to-transparent -translate-x-1/2" />
+
+                    {/* Mobile spine */}
+                    <div className="md:hidden absolute left-[19px] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--color-secondary)]/30 to-transparent" />
 
                     {timeline.map((item, i) => {
                         const isLeft = i % 2 === 0;
                         return (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: i * 0.1 }}
-                                className="grid grid-cols-[1fr_60px_1fr] items-center mb-8"
-                            >
-                                <div className="px-10">
-                                    {isLeft && (
-                                        <div className="p-8 border border-white/5 bg-[var(--color-secondary)]/[0.02] hover:border-[var(--color-secondary)]/20 transition-colors duration-500">
+                            <div key={i}>
+                                {/* Mobile View (Stacked) */}
+                                <div className="md:hidden flex gap-6 mb-8 relative">
+                                    <div className="flex flex-col items-center flex-shrink-0 z-10 w-10">
+                                        <div className="w-3.5 h-3.5 rounded-full bg-[var(--color-secondary)] shadow-[0_0_16px_var(--color-secondary)/50] border-2 border-[var(--color-primary)] shrink-0 mt-6" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="text-[0.65rem] tracking-[0.2em] text-[var(--color-secondary)] font-bold mb-2 uppercase">{item.year}</div>
+                                        <div className="p-6 border border-white/5 bg-[var(--color-secondary)]/[0.02]">
                                             <div className="text-[0.55rem] tracking-[0.3em] text-[var(--color-secondary)] mb-2.5 uppercase font-bold">
                                                 {item.label.toUpperCase()}
                                             </div>
                                             <p className="text-[var(--color-text-muted)] text-[0.93rem] leading-relaxed m-0">{item.text}</p>
                                         </div>
-                                    )}
+                                    </div>
                                 </div>
 
-                                <div className="flex flex-col items-center gap-1.5">
-                                    <div className="w-3.5 h-3.5 rounded-full bg-[var(--color-secondary)] shadow-[0_0_16px_var(--color-secondary)/50] border-2 border-[var(--color-primary)] shrink-0" />
-                                    <div className="text-[0.5rem] tracking-[0.15em] text-[var(--color-secondary)] text-center font-bold">{item.year}</div>
-                                </div>
-
-                                <div className="px-10">
-                                    {!isLeft && (
-                                        <div className="p-8 border border-white/5 bg-[var(--color-secondary)]/[0.02] hover:border-[var(--color-secondary)]/20 transition-colors duration-500">
-                                            <div className="text-[0.55rem] tracking-[0.3em] text-[var(--color-secondary)] mb-2.5 uppercase font-bold">
-                                                {item.label.toUpperCase()}
+                                {/* Desktop View (Zigzag) */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, delay: i * 0.1 }}
+                                    className="hidden md:grid grid-cols-[1fr_60px_1fr] items-center mb-8"
+                                >
+                                    <div className="px-10">
+                                        {isLeft && (
+                                            <div className="p-8 border border-white/5 bg-[var(--color-secondary)]/[0.02] hover:border-[var(--color-secondary)]/20 transition-colors duration-500">
+                                                <div className="text-[0.55rem] tracking-[0.3em] text-[var(--color-secondary)] mb-2.5 uppercase font-bold">
+                                                    {item.label.toUpperCase()}
+                                                </div>
+                                                <p className="text-[var(--color-text-muted)] text-[0.93rem] leading-relaxed m-0">{item.text}</p>
                                             </div>
-                                            <p className="text-[var(--color-text-muted)] text-[0.93rem] leading-relaxed m-0">{item.text}</p>
-                                        </div>
-                                    )}
-                                </div>
-                            </motion.div>
+                                        )}
+                                    </div>
+
+                                    <div className="flex flex-col items-center gap-1.5">
+                                        <div className="w-3.5 h-3.5 rounded-full bg-[var(--color-secondary)] shadow-[0_0_16px_var(--color-secondary)/50] border-2 border-[var(--color-primary)] shrink-0" />
+                                        <div className="text-[0.5rem] tracking-[0.15em] text-[var(--color-secondary)] text-center font-bold">{item.year}</div>
+                                    </div>
+
+                                    <div className="px-10">
+                                        {!isLeft && (
+                                            <div className="p-8 border border-white/5 bg-[var(--color-secondary)]/[0.02] hover:border-[var(--color-secondary)]/20 transition-colors duration-500">
+                                                <div className="text-[0.55rem] tracking-[0.3em] text-[var(--color-secondary)] mb-2.5 uppercase font-bold">
+                                                    {item.label.toUpperCase()}
+                                                </div>
+                                                <p className="text-[var(--color-text-muted)] text-[0.93rem] leading-relaxed m-0">{item.text}</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            </div>
                         );
                     })}
                 </div>
             </section>
 
             {/* ══ DYL METHOD ══════════════════════════════════════════ */}
-            <section className="bg-white/[0.02] border-y border-white/5 py-16 px-8">
+            <section className="bg-white/[0.02] border-y border-white/5 py-12 md:py-16 px-6 md:px-8">
                 <div className="max-w-[1100px] mx-auto">
                     <div className="text-center mb-12">
                         <GoldDivider label="The Method" />
@@ -274,8 +295,8 @@ const About = () => {
             </section>
 
             {/* ══ TANASH HOMES ════════════════════════════════════════ */}
-            <section className="max-w-[1100px] mx-auto px-8 py-16">
-                <div className="grid grid-cols-1 lg:grid-cols-[3fr_5fr] gap-12 items-center">
+            <section className="max-w-[1100px] mx-auto px-6 md:px-8 py-12 md:py-16">
+                <div className="grid grid-cols-1 lg:grid-cols-[3fr_5fr] gap-10 md:gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
