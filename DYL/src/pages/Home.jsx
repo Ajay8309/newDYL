@@ -164,15 +164,7 @@ const Home = () => {
                         transition={{ duration: 1, delay: 0.6 }}
                         className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] mb-4"
                     >
-                        <span className="relative inline-block">
-                            Decode
-                            <motion.span
-                                initial={{ width: 0 }}
-                                animate={{ width: '100%' }}
-                                transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
-                                className="absolute left-0 bottom-1 md:bottom-2 h-[1px] bg-white/90"
-                            />
-                        </span> Your Life
+                        <span className="text-white">Decode</span> Your Life
                     </motion.h1>
 
                     <motion.p
@@ -181,15 +173,7 @@ const Home = () => {
                         transition={{ duration: 0.8, delay: 0.8 }}
                         className="text-2xl md:text-3xl lg:text-4xl font-serif tracking-[0.12em] uppercase text-[var(--color-secondary)] mb-8"
                     >
-                        Science + <span className="relative inline-block">
-                            Spirituality
-                            <motion.span
-                                initial={{ width: 0 }}
-                                animate={{ width: '100%' }}
-                                transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
-                                className="absolute left-0 bottom-0 md:bottom-1 h-[1px] bg-white/90"
-                            />
-                        </span>
+                        Science + <span className="text-white">Spirituality</span>
                     </motion.p>
 
                     <motion.p
@@ -198,7 +182,7 @@ const Home = () => {
                         transition={{ duration: 1, delay: 1 }}
                         className="text-lg md:text-xl text-[var(--color-text-muted)] mb-12 max-w-2xl mx-auto tracking-wide italic"
                     >
-                        Your Life isn&apos;t Random. It&apos;s Patterned. Decodable. Transformable.
+                        Your Life isn&apos;t Random. It&apos;s Patterned. Decodable. <span className="text-[var(--color-secondary)]">Transformable</span>.
                     </motion.p>
 
                     <motion.div

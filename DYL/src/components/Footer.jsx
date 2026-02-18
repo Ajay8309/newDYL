@@ -21,7 +21,12 @@ const Footer = () => {
 
                     {/* Contact */}
                     <div className="text-left md:text-right">
-                        <h4 className="text-sm uppercase tracking-[0.2em] text-[var(--color-secondary)] mb-6 font-bold">Contact</h4>
+                        <h4
+                            className="text-sm uppercase tracking-[0.2em] mb-6 font-bold"
+                            style={{ color: 'var(--color-secondary)' }}
+                        >
+                            Contact
+                        </h4>
                         <div className="space-y-4 flex flex-col items-start md:items-end">
                             <div className="flex items-center gap-3">
                                 <Mail size={16} className="text-[var(--color-secondary)] flex-shrink-0" />
@@ -31,10 +36,13 @@ const Footer = () => {
                                 <MapPin size={16} className="text-[var(--color-secondary)] flex-shrink-0" />
                                 <span className="text-sm text-[var(--color-text-muted)]">Goa, Indore (sessions are held online)</span>
                             </div>
-                            <div className="flex items-center gap-3">
+                            <a
+                                href="tel:+917666987712"
+                                className="flex items-center gap-3 group hover:opacity-80 transition-opacity"
+                            >
                                 <Phone size={16} className="text-[var(--color-secondary)] flex-shrink-0" />
-                                <span className="text-sm text-[var(--color-text-muted)]">+91 76669 87712</span>
-                            </div>
+                                <span className="text-sm text-[var(--color-text-muted)] group-hover:text-white transition-colors">+91 76669 87712</span>
+                            </a>
                             <a
                                 href="https://www.instagram.com/de_codeyourlife/"
                                 target="_blank"

@@ -7,16 +7,16 @@ import { Check, Calendar, Upload, QrCode, Clock, Shield, Sparkles, Heart, Zap, X
 import qrCodeImg from '../assets/qr.png';
 
 const pricingData = [
+    { service: 'Akashic Records Reading', price: '₹4,000', duration: '30 mins' },
+    { service: 'Crystal Healing', price: '₹1,500', duration: '1 hour' },
+    { service: 'Crystal, Switchwords & Frequency', price: '₹1,200', duration: 'Per session' },
+    { service: 'General Consultation', price: '₹300', duration: '15 mins' },
+    { service: 'Karmic + Ancestral Healing / Entity Cord Cutting', price: 'From ₹16,000', duration: 'Per session' },
+    { service: 'Reiki Healing & Aura Cleansing', price: '₹2,000', duration: 'Per session' },
+    { service: 'Talk Therapy', price: '₹1,000/hr (min 4 sessions) / ₹2,000/hr', duration: '1 hour' },
     { service: 'Tarot Reading', price: '₹1,500', duration: '30 mins' },
     { service: 'Vedic Astrology', price: '₹2,000', duration: '30 mins' },
     { service: 'Vedic Numerology', price: '₹1,500', duration: '30 mins' },
-    { service: 'Akashic Records Reading', price: '₹4,000', duration: '30 mins' },
-    { service: 'Reiki Healing & Aura Cleansing', price: '₹2,000', duration: 'Per session' },
-    { service: 'General Consultation', price: '₹300', duration: '15 mins' },
-    { service: 'General Counseling', price: '₹1,000/hr (Block) / ₹2,000 (Single)', duration: '1 hour' },
-    { service: 'Crystal Healing', price: '₹1,500', duration: '1 hour' },
-    { service: 'Crystal, Switchwords & Frequency', price: '₹1,200', duration: 'Per session' },
-    { service: 'Karmic + Ancestral Healing / Entity Cord Cutting', price: 'From ₹16,000', duration: 'Per session' },
 ];
 
 const steps = ['Pay via QR', 'Upload Screenshot', 'Select Time'];
