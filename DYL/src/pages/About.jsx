@@ -24,7 +24,7 @@ const timeline = [
     {
         year: 'Goa',
         label: 'The Hospitality Chapter',
-        text: 'Alongside her spiritual practice, Aashna built Tanash Homes — boutique hospitality spaces for seekers and travellers. Previously owned a café and hostel in Vagator; later founded the luxury holiday-home brand that now hosts 150+ returning guests annually.',
+        text: <span>Alongside her spiritual practice, Aashna built <a href="https://www.tanashhomes.in/" target="_blank" rel="noreferrer" className="text-[var(--color-secondary)] hover:underline">Tanash Homes</a> — boutique hospitality spaces for seekers and travellers. Previously owned a café and hostel in Vagator; later founded the luxury holiday-home brand that now hosts 150+ returning guests annually.</span>,
     },
     {
         year: 'Now',
@@ -105,7 +105,7 @@ const About = () => {
                     transition={{ duration: 1, delay: 0.2 }}
                 >
                     <span className="block text-[0.58rem] tracking-[0.42em] text-[var(--color-secondary)] uppercase mb-4 font-bold">
-                        Psychic Mentor · Astrologer · Healing Guide · <br /> Airbnb Host @ Tanash Homes
+                        Psychic Mentor · Astrologer · Healing Guide · <br /> Airbnb Host @ <a href="https://www.tanashhomes.in/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors border-b border-[var(--color-secondary)]/30 hover:border-[var(--color-secondary)]">Tanash Homes</a>
                     </span>
 
                     <h1 className="font-serif font-light leading-[1.1] text-[clamp(2.8rem,5vw,4.2rem)] text-[var(--color-cream)] mb-2">
@@ -141,9 +141,15 @@ const About = () => {
                         <div className="text-[0.5rem] tracking-[0.35em] text-[var(--color-text-muted)] uppercase mb-2 text-center">Former Leadership At</div>
                         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
                             {['Amazon', 'Uber', 'Zomato', 'Tanash Homes', 'Mirashya Homes', 'Viking Homestays'].map(name => (
-                                <span key={name} className="font-serif text-lg md:text-xl font-semibold text-white/30 tracking-[0.15em] uppercase select-none whitespace-nowrap">
-                                    {name}
-                                </span>
+                                name === 'Tanash Homes' ? (
+                                    <a key={name} href="https://www.tanashhomes.in/" target="_blank" rel="noreferrer" className="font-serif text-lg md:text-xl font-semibold text-white/30 hover:text-[var(--color-secondary)] tracking-[0.15em] uppercase select-none whitespace-nowrap transition-colors">
+                                        {name}
+                                    </a>
+                                ) : (
+                                    <span key={name} className="font-serif text-lg md:text-xl font-semibold text-white/30 tracking-[0.15em] uppercase select-none whitespace-nowrap">
+                                        {name}
+                                    </span>
+                                )
                             ))}
                         </div>
                     </div>

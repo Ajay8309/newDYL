@@ -60,6 +60,10 @@ const Footer = () => {
                             Policies
                         </Link>
                         <span className="text-white/10">|</span>
+                        <a href="https://www.tanashhomes.in/" target="_blank" rel="noreferrer" className="text-xs text-[var(--color-text-muted)] hover:text-white transition-colors">
+                            Tanash Homes
+                        </a>
+                        <span className="text-white/10">|</span>
                         <p className="text-xs text-[var(--color-text-muted)]">
                             Made with love for seekers, by seekers.
                         </p>
