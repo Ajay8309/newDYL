@@ -29,7 +29,7 @@ const timeline = [
     {
         year: 'Now',
         label: 'The DYL Practice',
-        text: 'Today she guides 30+ clients through emotional healing, past-life karma resolution, relationship clarity, and life-path alignment — offering sessions rooted in compassion, honesty, and deep energetic awareness.',
+        text: 'Today she guides 150+ clients through emotional healing, past-life karma resolution, relationship clarity, and life-path alignment — offering sessions rooted in compassion, honesty, and deep energetic awareness.',
     },
 ];
 
@@ -119,37 +119,21 @@ const About = () => {
                         <p>
                             Aashna Ahuja is a psychic mentor and spiritual guide who helps individuals decode their life patterns, heal karmic imprints, and reconnect with their soul's truth. Her work blends{' '}
                             <span className="text-[var(--color-secondary)]">Akashic Records, Vedic Astrology, Numerology, Tarot, Reiki, Crystal Healing,</span> and{' '}
-                            <span className="text-[var(--color-secondary)]">Vedic Vaastu</span> — creating a deeply intuitive yet grounded approach to inner transformation.
+                            <span className="text-[var(--color-secondary)]">Vedic Vaastu</span> — creating a deeply intuitive yet grounded approach to inner transformation. She holds certifications in these modalities through AVV (Globally recognised).
                         </p>
                         <p>
-                            She has guided <strong className="text-[var(--color-cream)] font-normal">30+ clients</strong> through emotional healing, past-life karma resolution, relationship clarity, and life-path alignment — offering sessions rooted in compassion, honesty, and deep energetic awareness.
+                            She has guided <strong className="text-[var(--color-cream)] font-normal">150+ clients</strong> through emotional healing, past-life karma resolution, relationship clarity, and life-path alignment — offering sessions rooted in compassion, honesty, and deep energetic awareness.
                         </p>
                     </div>
-
-                    {/* Stats row */}
-                    <div className="grid grid-cols-3 gap-px bg-[var(--color-secondary)]/12 border border-[var(--color-secondary)]/12 mt-8 md:mt-10 mb-8 md:mb-10">
-                        {[['30+', 'Clients Guided'], ['200+', 'Sessions Held'], ['150+', 'Tanash Guests/yr']].map(([num, lbl]) => (
-                            <div key={lbl} className="text-center py-4 px-2 md:py-6 md:px-4 bg-[var(--color-secondary)]/[0.02]">
-                                <div className="font-serif text-[1.8rem] md:text-[2.2rem] font-light text-[var(--color-secondary)] leading-none">{num}</div>
-                                <div className="text-[0.55rem] md:text-[0.65rem] tracking-[0.15em] text-[var(--color-text-muted)] uppercase mt-1.5">{lbl}</div>
-                            </div>
-                        ))}
-                    </div>
-
+                    <br />
                     {/* Former leadership */}
                     <div className="p-4 border border-[var(--color-secondary)]/12 bg-[var(--color-secondary)]/[0.02]">
                         <div className="text-[0.5rem] tracking-[0.35em] text-[var(--color-text-muted)] uppercase mb-2 text-center">Former Leadership At</div>
                         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-10">
-                            {['Amazon', 'Uber', 'Zomato', 'Tanash Homes', 'Mirashya Homes', 'Viking Homestays'].map(name => (
-                                name === 'Tanash Homes' ? (
-                                    <a key={name} href="https://www.tanashhomes.in/" target="_blank" rel="noreferrer" className="font-serif text-lg md:text-xl font-semibold text-white/30 hover:text-[var(--color-secondary)] tracking-[0.15em] uppercase select-none whitespace-nowrap transition-colors">
-                                        {name}
-                                    </a>
-                                ) : (
-                                    <span key={name} className="font-serif text-lg md:text-xl font-semibold text-white/30 tracking-[0.15em] uppercase select-none whitespace-nowrap">
-                                        {name}
-                                    </span>
-                                )
+                            {['Amazon', 'Uber', 'Zomato', 'Tanash Homes', 'Mirashya Homes', 'Viiking Homestays'].map(name => (
+                                <span key={name} className="font-serif text-lg md:text-xl font-semibold text-white/30 tracking-[0.15em] uppercase select-none whitespace-nowrap">
+                                    {name}
+                                </span>
                             ))}
                         </div>
                     </div>

@@ -11,7 +11,7 @@ const pricingData = [
     { service: 'Crystal Healing', price: '₹1,500', duration: '1 hour' },
     { service: 'Crystal, Switchwords & Frequency', price: '₹1,200', duration: 'Per session' },
     { service: 'General Consultation', price: '₹300', duration: '15 mins' },
-    { service: 'Karmic + Ancestral Healing / Entity Cord Cutting', price: 'From ₹16,000', duration: 'Per session' },
+    { service: 'Karmic + Ancestral Healing / Entity Cord Cutting', price: '₹16,000 Onwards', duration: 'Per session' },
     { service: 'Reiki Healing & Aura Cleansing', price: '₹2,000', duration: 'Per session' },
     { service: 'Talk Therapy', price: '₹1,000/hr (min 4 sessions) / ₹2,000/hr', duration: '1 hour' },
     { service: 'Tarot Reading', price: '₹1,500', duration: '30 mins' },
