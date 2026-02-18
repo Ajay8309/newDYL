@@ -72,7 +72,7 @@ const Navbar = () => {
                                 <motion.button
                                     whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(212,175,55,0.3)' }}
                                     whileTap={{ scale: 0.95 }}
-                                    style={{ backgroundColor: '#A98F47', color: '#022C22' }}
+                                    style={{ backgroundColor: '#E0B23A', color: '#022C22' }}
                                     className="px-5 py-2 text-xs font-bold uppercase tracking-widest rounded-md ml-2"
                                 >
                                     Book Now
@@ -92,7 +92,7 @@ const Navbar = () => {
                         </Link>
 
                         <Link to="/booking">
-                            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#A98F47' }}>Book</span>
+                            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#E0B23A' }}>Book</span>
                         </Link>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ const Navbar = () => {
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                style={{ backgroundColor: '#A98F47', color: '#022C22' }}
+                                style={{ backgroundColor: '#E0B23A', color: '#022C22' }}
                                 className="px-8 py-3 font-bold rounded-lg mt-4"
                             >
                                 Book Now

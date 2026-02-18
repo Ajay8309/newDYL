@@ -154,6 +154,7 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.6 }}
                         className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] mb-4"
+                        style={{ color: '#E0B23A' }}
                     >
                         Decode Your Life
                     </motion.h1>
