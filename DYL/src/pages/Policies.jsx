@@ -107,7 +107,7 @@ const Policies = () => {
                         href="mailto:contact@decodeyourlife.in"
                         className="text-2xl font-serif text-[var(--color-secondary)] hover:underline"
                     >
-                        contact@decodeyourlife.in
+                        decodeyourlife.12@gmail.com
                     </a>
                 </div>
             </div>

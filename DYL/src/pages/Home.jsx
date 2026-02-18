@@ -215,39 +215,37 @@ const Home = () => {
             {/* ═══════════════════════════════════════════
            1.5 · STATS BAR
        ═══════════════════════════════════════════ */}
-            <section className="bg-[#022C22] py-12 border-y border-[var(--color-secondary)]/20 relative z-20">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-2 gap-8 text-center divide-x divide-[var(--color-secondary)]/20">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="flex flex-col items-center justify-center p-4"
-                        >
-                            <span className="text-4xl md:text-5xl font-serif font-bold text-[var(--color-secondary)] mb-2">
-                                40+
-                            </span>
-                            <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-                                Repetitive Clients Worldwide
-                            </span>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="flex flex-col items-center justify-center p-4"
-                        >
-                            <span className="text-4xl md:text-5xl font-serif font-bold text-[var(--color-secondary)] mb-2">
-                                200
-                            </span>
-                            <span className="text-xs md:text-sm uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
-                                Sessions Conducted
-                            </span>
-                        </motion.div>
+            <section className="relative z-20">
+                <div className="h-px bg-gradient-to-r from-transparent via-[var(--color-secondary)]/50 to-transparent" />
+                <div className="py-10 md:py-12 bg-[var(--color-primary)]">
+                    <div className="container mx-auto px-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-[var(--color-secondary)]/15">
+                            {[
+                                { value: '40+', label: 'Clients Worldwide' },
+                                { value: '200+', label: 'Sessions Conducted' },
+                                { value: '20+', label: 'Countries Reached' },
+                                { value: '7+', label: 'Healing Modalities' },
+                            ].map((stat, i) => (
+                                <motion.div
+                                    key={stat.label}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="flex flex-col items-center py-2"
+                                >
+                                    <span className="text-4xl md:text-5xl font-serif font-bold text-[var(--color-secondary)] mb-1">
+                                        {stat.value}
+                                    </span>
+                                    <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-[var(--color-text-muted)]">
+                                        {stat.label}
+                                    </span>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
+                <div className="h-px bg-gradient-to-r from-transparent via-[var(--color-secondary)]/50 to-transparent" />
             </section>
 
             {/* ═══════════════════════════════════════════
