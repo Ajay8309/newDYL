@@ -24,7 +24,7 @@ const timeline = [
     {
         year: 'Goa',
         label: 'The Hospitality Chapter',
-        text: 'Alongside her spiritual practice, Aashna built Tanash Homes — boutique hospitality spaces for seekers and travellers. Previously owned a café and hostel in Vagator; later founded the luxury holiday-home brand that now hosts 100+ returning guests annually.',
+        text: 'Alongside her spiritual practice, Aashna built Tanash Homes — boutique hospitality spaces for seekers and travellers. Previously owned a café and hostel in Vagator; later founded the luxury holiday-home brand that now hosts 150+ returning guests annually.',
     },
     {
         year: 'Now',
@@ -52,7 +52,7 @@ const About = () => {
         <div className="min-h-screen bg-[var(--color-primary)] pt-20">
 
             {/* ══ HERO SPLIT ══════════════════════════════════════════ */}
-            <section className="max-w-[1200px] mx-auto px-8 pt-20 pb-16 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-20 items-start">
+            <section className="max-w-[1200px] mx-auto px-8 pt-16 pb-8 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-12 items-start">
 
                 {/* Left: Portrait */}
                 <motion.div
@@ -105,7 +105,7 @@ const About = () => {
                     transition={{ duration: 1, delay: 0.2 }}
                 >
                     <span className="block text-[0.58rem] tracking-[0.42em] text-[var(--color-secondary)] uppercase mb-4 font-bold">
-                        Psychic Mentor · Astrologer · Healing Guide · Airbnb Host @ Tanash Homes
+                        Psychic Mentor · Astrologer · Healing Guide · <br /> Airbnb Host @ Tanash Homes
                     </span>
 
                     <h1 className="font-serif font-light leading-[1.1] text-[clamp(2.8rem,5vw,4.2rem)] text-[var(--color-cream)] mb-2">
@@ -128,7 +128,7 @@ const About = () => {
 
                     {/* Stats row */}
                     <div className="grid grid-cols-3 gap-px bg-[var(--color-secondary)]/12 border border-[var(--color-secondary)]/12 mt-10 mb-10">
-                        {[['30+', 'Clients Guided'], ['200+', 'Sessions Held'], ['100+', 'Tanash Guests/yr']].map(([num, lbl]) => (
+                        {[['30+', 'Clients Guided'], ['200+', 'Sessions Held'], ['150+', 'Tanash Guests/yr']].map(([num, lbl]) => (
                             <div key={lbl} className="text-center py-6 px-4 bg-[var(--color-secondary)]/[0.02]">
                                 <div className="font-serif text-[2.2rem] font-light text-[var(--color-secondary)] leading-none">{num}</div>
                                 <div className="text-[0.65rem] tracking-[0.15em] text-[var(--color-text-muted)] uppercase mt-1.5">{lbl}</div>
@@ -137,11 +137,11 @@ const About = () => {
                     </div>
 
                     {/* Former leadership */}
-                    <div className="p-5 border border-[var(--color-secondary)]/12 bg-[var(--color-secondary)]/[0.02]">
-                        <div className="text-[0.5rem] tracking-[0.35em] text-[var(--color-text-muted)] uppercase mb-3 text-center">Former Leadership At</div>
-                        <div className="flex items-center justify-center gap-6 md:gap-10">
-                            {['Amazon', 'Uber', 'Zomato'].map(name => (
-                                <span key={name} className="font-serif text-lg md:text-xl font-semibold text-white/30 tracking-[0.15em] uppercase select-none">
+                    <div className="p-4 border border-[var(--color-secondary)]/12 bg-[var(--color-secondary)]/[0.02]">
+                        <div className="text-[0.5rem] tracking-[0.35em] text-[var(--color-text-muted)] uppercase mb-2 text-center">Former Leadership At</div>
+                        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                            {['Amazon', 'Uber', 'Zomato', 'Tanash Homes', 'Mirashya Homes', 'Viking Homestays'].map(name => (
+                                <span key={name} className="font-serif text-lg md:text-xl font-semibold text-white/30 tracking-[0.15em] uppercase select-none whitespace-nowrap">
                                     {name}
                                 </span>
                             ))}
@@ -150,8 +150,7 @@ const About = () => {
                 </motion.div>
             </section>
 
-            {/* ══ PHILOSOPHY QUOTE ════════════════════════════════════ */}
-            <section className="py-20 text-center border-y border-white/5 bg-white/[0.02] relative overflow-hidden">
+            <section className="py-12 text-center border-y border-white/5 bg-white/[0.02] relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-[radial-gradient(ellipse,var(--color-secondary)/5%,transparent_70%)] pointer-events-none" />
                 <motion.blockquote
                     initial={{ opacity: 0, y: 20 }}
@@ -159,9 +158,9 @@ const About = () => {
                     viewport={{ once: true }}
                     className="relative m-0"
                 >
-                    <div className="font-serif text-5xl text-[var(--color-secondary)]/20 leading-none mb-4">"</div>
-                    <p className="font-serif text-[clamp(1.5rem,3vw,2.2rem)] italic font-light text-[var(--color-cream)] max-w-[720px] mx-auto mb-6 leading-relaxed">
-                        Spirituality is not about escaping life,<br />but understanding it deeply.
+                    <div className="font-serif text-5xl text-[var(--color-secondary)]/20 leading-none mb-3">"</div>
+                    <p className="font-serif text-[clamp(1.4rem,3vw,2rem)] italic font-light text-[var(--color-cream)] max-w-[720px] mx-auto mb-4 leading-relaxed px-4">
+                        A hungry stomach can't let you sleep,<br />a hungry soul can't let you die.
                     </p>
                     <cite className="text-[0.58rem] tracking-[0.35em] text-[var(--color-secondary)] not-italic font-bold uppercase">
                         — Aashna Ahuja
@@ -170,12 +169,13 @@ const About = () => {
             </section>
 
             {/* ══ JOURNEY TIMELINE ════════════════════════════════════ */}
-            <section className="max-w-[1100px] mx-auto px-8 py-28">
-                <div className="text-center mb-20">
+            <section className="max-w-[1100px] mx-auto px-8 py-16">
+                <div className="text-center mb-12">
                     <GoldDivider label="Her Story" />
                     <h2 className="font-serif font-light text-[clamp(2rem,4vw,3rem)] text-[var(--color-cream)] text-center leading-[1.1]">
                         From Corporate Life<br />
-                        <span className="italic text-[var(--color-secondary)]">to Conscious Living</span>
+                        <span className="italic text-[var(--color-secondary)]">to </span>
+                        <span className="italic text-[var(--color-cream)]">Conscious Living</span>
                     </h2>
                 </div>
 
@@ -192,7 +192,7 @@ const About = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, delay: i * 0.1 }}
-                                className="grid grid-cols-[1fr_60px_1fr] items-center mb-12"
+                                className="grid grid-cols-[1fr_60px_1fr] items-center mb-8"
                             >
                                 <div className="px-10">
                                     {isLeft && (
@@ -227,9 +227,9 @@ const About = () => {
             </section>
 
             {/* ══ DYL METHOD ══════════════════════════════════════════ */}
-            <section className="bg-white/[0.02] border-y border-white/5 py-28 px-8">
+            <section className="bg-white/[0.02] border-y border-white/5 py-16 px-8">
                 <div className="max-w-[1100px] mx-auto">
-                    <div className="text-center mb-20">
+                    <div className="text-center mb-12">
                         <GoldDivider label="The Method" />
                         <h2 className="font-serif font-light text-[clamp(2rem,4vw,3rem)] text-[var(--color-cream)] text-center leading-[1.1]">
                             The{' '}
@@ -268,8 +268,8 @@ const About = () => {
             </section>
 
             {/* ══ TANASH HOMES ════════════════════════════════════════ */}
-            <section className="max-w-[1100px] mx-auto px-8 py-28">
-                <div className="grid grid-cols-1 lg:grid-cols-[3fr_5fr] gap-20 items-center">
+            <section className="max-w-[1100px] mx-auto px-8 py-16">
+                <div className="grid grid-cols-1 lg:grid-cols-[3fr_5fr] gap-12 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -304,7 +304,7 @@ const About = () => {
                             The spaces are designed for those who arrive with questions and leave with clarity — a seamless extension of the DYL philosophy into physical form.
                         </p>
                         <div className="flex gap-10">
-                            {[['100+', 'Returning Guests/yr'], ['Vagator, Goa', 'India']].map(([n, l]) => (
+                            {[['150+', 'Returning Guests/yr'], ['Goa', 'India']].map(([n, l]) => (
                                 <div key={l}>
                                     <div className="font-serif text-3xl font-light text-[var(--color-secondary)] leading-none">{n}</div>
                                     <div className="text-[0.65rem] tracking-[0.15em] text-[var(--color-text-muted)] uppercase mt-1">{l}</div>
@@ -316,7 +316,7 @@ const About = () => {
             </section>
 
             {/* ══ BOTTOM CTA ══════════════════════════════════════════ */}
-            <section className="py-24 px-8 text-center border-t border-white/5 bg-white/[0.01] relative overflow-hidden">
+            <section className="py-16 px-8 text-center border-t border-white/5 bg-white/[0.01] relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,var(--color-secondary)/5%,transparent_70%)] pointer-events-none" />
                 <div className="relative">
                     <GoldDivider label="Begin" />
@@ -331,7 +331,7 @@ const About = () => {
                         <motion.button
                             whileHover={{ scale: 1.05, boxShadow: '0 16px 50px rgba(255, 255, 255, 0.3)' }}
                             whileTap={{ scale: 0.95 }}
-                            className="bg-black px-14 py-4 text-sm font-bold tracking-[0.3em] uppercase border-none cursor-pointer"
+                            className="bg-black px-14 py-4 text-sm font-bold tracking-[0.3em] uppercase border-2 border-[var(--color-secondary)] cursor-pointer text-[var(--color-cream)]"
                         >
                             Book My Slot
                         </motion.button>
