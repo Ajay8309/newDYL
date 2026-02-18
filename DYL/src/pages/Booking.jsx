@@ -145,7 +145,7 @@ const Booking = () => {
         try {
             const res = await api.post('/api/upload', uploadData, { headers: { 'Content-Type': 'multipart/form-data' } });
             setScreenshotUrl(res.data);
-            nextStep();
+            // nextStep(); // Removed auto-navigation
         } catch (err) {
             console.error("Upload failed:", err);
             setUploadError("Click to retry upload. Please ensure file is an image under 5MB.");

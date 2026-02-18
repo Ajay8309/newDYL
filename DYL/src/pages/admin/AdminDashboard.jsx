@@ -74,6 +74,14 @@ const AdminDashboard = () => {
 
     const pendingCount = Array.isArray(bookings) ? bookings.filter(b => b.status === 'pending').length : 0;
 
+    const getImageUrl = (url) => {
+        if (!url) return '';
+        if (url.includes('localhost')) {
+            return url.replace(/http:\/\/localhost:\d+/, 'https://decodeyourlifestyle-modern-backend.onrender.com');
+        }
+        return url;
+    };
+
     return (
         <div className="min-h-screen bg-[#022C22] pt-32 px-8 pb-20 relative overflow-hidden text-white">
             {/* Background Accent */}
@@ -223,6 +231,7 @@ const AdminDashboard = () => {
                                             <td className="px-8 py-6">
                                                 <div className="font-bold text-white">{booking.name}</div>
                                                 <div className="text-xs text-white/40">{booking.email}</div>
+                                                <div className="text-xs text-white/40">{booking.phone}</div>
                                                 <div className="text-[9px] text-white/20 mt-1 uppercase tracking-tighter">Ordered {booking.createdAt ? new Date(booking.createdAt).toLocaleDateString() : 'N/A'}</div>
                                             </td>
                                             <td className="px-8 py-6">
@@ -293,7 +302,7 @@ const AdminDashboard = () => {
                             className="relative max-w-4xl max-h-full"
                             onClick={e => e.stopPropagation()}
                         >
-                            <img src={viewingScreenshot} alt="Payment Proof" className="w-full h-auto rounded-2xl shadow-2xl border border-white/10" />
+                            <img src={getImageUrl(viewingScreenshot)} alt="Payment Proof" className="w-full h-auto rounded-2xl shadow-2xl border border-white/10" />
                             <button
                                 onClick={() => setViewingScreenshot(null)}
                                 className="absolute -top-12 -right-12 p-3 text-white/50 hover:text-white transition-colors"

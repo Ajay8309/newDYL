@@ -39,7 +39,9 @@ router.post('/', upload.single('image'), async (req, res) => {
         });
 
         // Return the URL that the frontend expects
-        const fileUrl = `http://localhost:${process.env.PORT}/api/images/${filename}`;
+        const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+        const host = req.get('host');
+        const fileUrl = `${protocol}://${host}/api/images/${filename}`;
 
         res.json(fileUrl);
     } catch (err) {
