@@ -18,6 +18,7 @@ const AdminLogin = () => {
         try {
             const res = await api.post('/api/auth/login', { username, password });
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('isAdmin', 'true');
             navigate('/admin/dashboard');
         } catch (err) {
             setError(err.response?.data?.message || 'Authentication failed. Please check your credentials.');
@@ -149,14 +150,7 @@ const AdminLogin = () => {
                 </p>
             </motion.div>
 
-            {/* Inline CSS for the glass effect if needed, but Tailwind glass class should work */}
-            <style jsx>{`
-                .glass {
-                    background: rgba(255, 255, 255, 0.03);
-                    backdrop-filter: blur(20px);
-                    -webkit-backdrop-filter: blur(20px);
-                }
-            `}</style>
+
         </div>
     );
 };

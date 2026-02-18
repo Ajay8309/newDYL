@@ -43,6 +43,27 @@ const Blog = () => {
 
     const featuredPost = posts[0];
 
+    // Helper to get image URL (same as in BlogPost.jsx to handle localhost paths)
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return null;
+
+        // Fix: If the image path is a localhost URL, replace it with the current API base URL
+        if (imagePath.includes('localhost:5001') || imagePath.includes('localhost:5000')) {
+            const baseUrl = api.defaults.baseURL || '';
+            // Split by /api/ to get the relative path
+            const parts = imagePath.split('/api/');
+            if (parts.length > 1) {
+                return `${baseUrl}/api/${parts[1]}`;
+            }
+        }
+
+        if (imagePath.startsWith('http')) return imagePath;
+
+        // Prepend backend URL if it's a relative path
+        const baseUrl = api.defaults.baseURL || '';
+        return `${baseUrl}${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
+    };
+
     if (loading) {
         return (
             <div className="min-h-screen bg-[var(--color-primary)] flex items-center justify-center">
@@ -59,6 +80,7 @@ const Blog = () => {
             {/* Background Decor — matching Home page */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-secondary)]/5 blur-[120px] rounded-full -z-0" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[var(--color-secondary)]/5 blur-[100px] rounded-full -z-0" />
+
 
             <div className="container mx-auto px-6 relative z-10">
                 {/* Header — matching Home page style */}
@@ -138,7 +160,7 @@ const Blog = () => {
                                 <div className="md:flex">
                                     <div className={`md:w-2/5 bg-gradient-to-br ${featuredPost.gradient} p-12 flex items-center justify-center min-h-[250px] relative overflow-hidden`}>
                                         <img
-                                            src={featuredPost.image}
+                                            src={getImageUrl(featuredPost.image)}
                                             alt={featuredPost.title}
                                             className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay transition-transform duration-700 group-hover:scale-110"
                                         />
@@ -181,7 +203,7 @@ const Blog = () => {
                                     {/* Gradient Header */}
                                     <div className={`bg-gradient-to-br ${article.gradient} h-48 relative overflow-hidden`}>
                                         <img
-                                            src={article.image}
+                                            src={getImageUrl(article.image)}
                                             alt={article.title}
                                             className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay transition-transform duration-700 group-hover:scale-110"
                                         />

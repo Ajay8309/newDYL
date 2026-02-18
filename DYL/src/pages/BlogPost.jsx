@@ -60,17 +60,36 @@ const BlogPost = () => {
         );
     }
 
+    // Helper to get image URL
+    const getImageUrl = (imagePath) => {
+        if (!imagePath) return null;
 
+        // Fix: If the image path is a localhost URL, replace it with the current API base URL
+        if (imagePath.includes('localhost:5001') || imagePath.includes('localhost:5000')) {
+            const baseUrl = api.defaults.baseURL || '';
+            // Split by /api/ to get the relative path
+            const parts = imagePath.split('/api/');
+            if (parts.length > 1) {
+                return `${baseUrl}/api/${parts[1]}`;
+            }
+        }
+
+        if (imagePath.startsWith('http')) return imagePath;
+
+        // Prepend backend URL if it's a relative path
+        const baseUrl = api.defaults.baseURL || '';
+        return `${baseUrl}${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
+    };
 
     return (
-        <div className="min-h-screen bg-[#0f1410] pt-32 pb-20 relative overflow-hidden">
+        <div className="min-h-screen bg-[var(--color-primary)] pt-32 pb-20 relative overflow-hidden">
             {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full -z-0" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-900/10 blur-[100px] rounded-full -z-0" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-secondary)]/5 blur-[120px] rounded-full -z-0" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[var(--color-secondary)]/10 blur-[100px] rounded-full -z-0" />
 
             <article className="container mx-auto px-6 max-w-4xl relative z-10">
                 {/* Back Link */}
-                <Link to="/blog" className="inline-flex items-center gap-2 text-emerald-100/40 hover:text-emerald-400 transition-all mb-12 group">
+                <Link to="/blog" className="inline-flex items-center gap-2 text-[var(--color-text-muted)] hover:text-[var(--color-secondary)] transition-all mb-12 group">
                     <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                     <span className="text-sm uppercase tracking-widest">Back to Articles</span>
                 </Link>
@@ -85,36 +104,36 @@ const BlogPost = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-950/30 backdrop-blur-sm mb-8"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 backdrop-blur-sm mb-8"
                     >
-                        <Zap size={14} className="text-emerald-400" />
-                        <span className="text-xs tracking-[0.2em] text-emerald-300 uppercase">
+                        <Zap size={14} className="text-[var(--color-secondary)]" />
+                        <span className="text-xs tracking-[0.2em] text-[var(--color-secondary)] uppercase">
                             {post.category}
                         </span>
                     </motion.div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-10 tracking-tight leading-[1.2]"
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-[var(--color-cream)] mb-10 tracking-tight leading-[1.2]"
                         style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                         {post.title}
                     </h1>
 
-                    <div className="flex flex-wrap items-center gap-8 text-sm text-emerald-100/40 border-b border-white/5 pb-10">
+                    <div className="flex flex-wrap items-center gap-8 text-sm text-[var(--color-text-muted)] border-b border-white/5 pb-10">
                         <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xs font-bold border border-emerald-500/20">
+                            <div className="w-8 h-8 rounded-full bg-[var(--color-secondary)]/10 flex items-center justify-center text-[var(--color-secondary)] text-xs font-bold border border-[var(--color-secondary)]/20">
                                 AA
                             </div>
-                            <span className="text-emerald-100 font-medium">{post.author}</span>
+                            <span className="text-[var(--color-cream)] font-medium">{post.author}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Calendar size={16} className="text-emerald-400/60" />
+                            <Calendar size={16} className="text-[var(--color-secondary)]/60" />
                             <span>{post.date}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <Clock size={16} className="text-emerald-400/60" />
+                            <Clock size={16} className="text-[var(--color-secondary)]/60" />
                             <span>{post.readTime} read</span>
                         </div>
                         <div className="ml-auto">
-                            <button className="flex items-center gap-2 hover:text-emerald-300 transition-colors uppercase tracking-widest text-[10px] font-bold">
+                            <button className="flex items-center gap-2 hover:text-[var(--color-secondary)] transition-colors uppercase tracking-widest text-[10px] font-bold">
                                 <Share2 size={16} /> Share Insight
                             </button>
                         </div>
@@ -130,7 +149,7 @@ const BlogPost = () => {
                 >
                     <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient} mix-blend-overlay opacity-60`} />
                     <img
-                        src={post.image}
+                        src={getImageUrl(post.image)}
                         alt={post.title}
                         className="w-full h-full object-cover"
                     />
@@ -176,7 +195,7 @@ const BlogPost = () => {
                                 <Link to={`/blog/${related._id}`} key={related._id} className="group">
                                     <div className="glass rounded-xl overflow-hidden h-full hover:border-[var(--color-secondary)]/30 transition-all">
                                         <div className={`h-48 bg-gradient-to-br ${related.gradient} relative`}>
-                                            <img src={related.image} alt={related.title} className="w-full h-full object-cover opacity-50 mix-blend-overlay" />
+                                            <img src={getImageUrl(related.image)} alt={related.title} className="w-full h-full object-cover opacity-50 mix-blend-overlay" />
                                         </div>
                                         <div className="p-6">
                                             <span className="text-xs uppercase tracking-widest text-[var(--color-secondary)] mb-2 block">
