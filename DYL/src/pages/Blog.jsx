@@ -2,19 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Clock, ArrowRight } from "lucide-react";
-import api from "../utils/api";
-
-const getImageUrl = (imagePath) => {
-    if (!imagePath) return null;
-    if (imagePath.includes("localhost:5001") || imagePath.includes("localhost:5000")) {
-        const baseUrl = api.defaults.baseURL || "";
-        const parts = imagePath.split("/api/");
-        if (parts.length > 1) return `${baseUrl}/api/${parts[1]}`;
-    }
-    if (imagePath.startsWith("http")) return imagePath;
-    const baseUrl = api.defaults.baseURL || "";
-    return `${baseUrl}${imagePath.startsWith("/") ? "" : "/"}${imagePath}`;
-};
+import api, { getImageUrl } from "../utils/api";
 
 const Blog = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");

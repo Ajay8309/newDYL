@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Edit, Trash2, LogOut, Check, X, Eye, FileText, ClipboardList, Loader } from 'lucide-react';
-import api from '../../utils/api';
+import api, { getImageUrl } from '../../utils/api';
 
 const AdminDashboard = () => {
     const [posts, setPosts] = useState([]);
@@ -73,14 +73,6 @@ const AdminDashboard = () => {
     };
 
     const pendingCount = Array.isArray(bookings) ? bookings.filter(b => b.status === 'pending').length : 0;
-
-    const getImageUrl = (url) => {
-        if (!url) return '';
-        if (url.includes('localhost')) {
-            return url.replace(/http:\/\/localhost:\d+/, 'https://decodeyourlifestyle-modern-backend.onrender.com');
-        }
-        return url;
-    };
 
     return (
         <div className="min-h-screen bg-[#022C22] pt-32 px-8 pb-20 relative overflow-hidden text-white">
@@ -162,7 +154,7 @@ const AdminDashboard = () => {
                                     <div className="flex flex-col md:flex-row items-center gap-8 w-full">
                                         <div className="relative w-full md:w-32 h-40 md:h-24 rounded-2xl overflow-hidden bg-white/5 flex-shrink-0 border border-white/10 group-hover:border-[var(--color-secondary)]/20 transition-colors">
                                             {post.image ? (
-                                                <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                                <img src={getImageUrl(post.image)} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center text-[var(--color-secondary)]/20">
                                                     <Edit size={24} />

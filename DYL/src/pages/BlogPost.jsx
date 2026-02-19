@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, Share2 } from 'lucide-react';
-import api from '../utils/api';
+import api, { getImageUrl } from '../utils/api';
 
 const BlogPost = () => {
     const { id } = useParams();
@@ -32,18 +32,6 @@ const BlogPost = () => {
         };
         fetchPostData();
     }, [id]);
-
-    const getImageUrl = (imagePath) => {
-        if (!imagePath) return null;
-        if (imagePath.includes('localhost:5001') || imagePath.includes('localhost:5000')) {
-            const baseUrl = api.defaults.baseURL || '';
-            const parts = imagePath.split('/api/');
-            if (parts.length > 1) return `${baseUrl}/api/${parts[1]}`;
-        }
-        if (imagePath.startsWith('http')) return imagePath;
-        const baseUrl = api.defaults.baseURL || '';
-        return `${baseUrl}${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
-    };
 
     if (loading) {
         return (

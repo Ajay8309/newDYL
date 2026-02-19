@@ -140,12 +140,16 @@ const Home = () => {
                     playsInline
                     webkit-playsinline="true"
                     preload="auto"
-                    className="absolute inset-0 w-full h-full object-cover md:scale-110 z-0"
+                    className="absolute inset-0 w-full h-full object-cover md:scale-110 z-0 pointer-events-none"
                     style={{ filter: 'brightness(0.45)' }}
                     poster={heroBg}
                 >
                     <source src="/heroVid.mp4" type="video/mp4" />
                 </video>
+                <style>{`
+                    video::-webkit-media-controls { display: none !important; }
+                    video::-webkit-media-controls-enclosure { display: none !important; }
+                `}</style>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-primary)] z-0" />
 
                 <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">

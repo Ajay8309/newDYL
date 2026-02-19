@@ -21,7 +21,7 @@ const pricingData = [
 
 const steps = ['Pay via QR', 'Upload Screenshot', 'Select Time'];
 
-const CALENDLY_URL = 'https://calendly.com/ajaypanaskar8/30min';
+const CALENDLY_URL = 'https://calendly.com/decodeyourlife-12/1-hour-session';
 
 const CalendlyEmbed = () => {
     const containerRef = useRef(null);
