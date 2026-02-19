@@ -487,6 +487,13 @@ const Home = () => {
                         <div className="absolute left-[22px] md:left-8 top-0 bottom-0 w-1 bg-gradient-to-t from-red-900/40 via-sky-800/40 to-[var(--color-secondary)]/60 rounded-full" />
 
                         <div className="space-y-1">
+                            {/* Heading for Frequency */}
+                            <div className="flex items-center gap-6 pl-4 mb-2">
+                                <div className="w-4" /> {/* Spacer aligns with the nodes below */}
+                                <span className="text-xs font-bold text-[var(--color-secondary)] uppercase tracking-wider">
+                                    Frequency (Hz)
+                                </span>
+                            </div>
                             {consciousnessLevels.map((item, index) => (
                                 <motion.div
                                     key={item.name}
