@@ -58,7 +58,12 @@ const Navbar = () => {
 
                         {/* Center Logo */}
                         <Link to="/" className="flex items-center justify-center">
-                            <img src={logo} alt="Decode Your Life" className="h-20 md:h-24 object-contain transition-all duration-300 hover:scale-105" />
+                            <img
+                                src={logo}
+                                alt="Decode Your Life"
+                                className="h-20 md:h-24 object-contain transition-all duration-300 hover:scale-105"
+                                style={{ filter: 'brightness(1.1) contrast(1.2) saturate(1.1) drop-shadow(0 0 10px rgba(0,0,0,0.1))' }}
+                            />
                         </Link>
 
                         {/* Right Links + CTA */}
@@ -88,7 +93,12 @@ const Navbar = () => {
                         </button>
 
                         <Link to="/" className="flex items-center">
-                            <img src={logo} alt="Decode Your Life" className="h-14 object-contain" />
+                            <img
+                                src={logo}
+                                alt="Decode Your Life"
+                                className="h-14 object-contain"
+                                style={{ filter: 'brightness(1.1) contrast(1.2) saturate(1.1)' }}
+                            />
                         </Link>
 
                         <Link to="/booking">
