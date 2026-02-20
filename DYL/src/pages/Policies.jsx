@@ -37,7 +37,7 @@ const policySections = [
 
 const Policies = () => {
     return (
-        <div className="min-h-screen bg-[var(--color-primary)] pt-32 pb-20">
+        <div className="min-h-screen bg-[var(--color-primary)] pt-40 pb-20">
             <div className="container mx-auto px-6 max-w-5xl">
 
                 <motion.div

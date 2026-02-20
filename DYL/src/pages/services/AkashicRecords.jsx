@@ -186,7 +186,7 @@ const AkashicRecords = () => {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.6 }}
-                            className="sticky top-32 space-y-6"
+                            className="sticky top-40 space-y-6"
                         >
                             <div className="glass p-8 rounded-[2rem] border border-[var(--color-secondary)]/30 shadow-[0_0_30px_rgba(169,143,71,0.1)] relative overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-secondary)]/10 to-transparent pointer-events-none" />
@@ -209,7 +209,7 @@ const AkashicRecords = () => {
                                         </div>
                                         <div>
                                             <div className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Fee</div>
-                                            <div className="font-bold">₹4,000</div>
+                                            <div className="font-bold">₹499</div>
                                         </div>
                                     </div>
                                 </div>

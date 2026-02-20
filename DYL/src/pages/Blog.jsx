@@ -39,7 +39,7 @@ const Blog = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[var(--color-primary)] pt-32 pb-24">
+        <div className="min-h-screen bg-[var(--color-primary)] pt-40 pb-24">
             <div className="container mx-auto px-6 max-w-5xl">
 
                 {/* Header */}

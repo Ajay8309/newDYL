@@ -49,7 +49,7 @@ const GoldDivider = ({ label }) => (
 ═══════════════════════════════════════════════════════════ */
 const About = () => {
     return (
-        <div className="min-h-screen bg-[var(--color-primary)] pt-20">
+        <div className="min-h-screen bg-[var(--color-primary)] pt-40">
 
             {/* ══ HERO SPLIT ══════════════════════════════════════════ */}
             <section className="max-w-[1200px] mx-auto px-6 md:px-8 pt-12 md:pt-16 pb-8 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 md:gap-12 items-start">

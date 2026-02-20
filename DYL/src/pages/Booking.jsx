@@ -7,16 +7,16 @@ import { Check, Calendar, Upload, QrCode, Clock, Shield, Sparkles, Heart, Zap, X
 import qrCodeImg from '../assets/qr.png';
 
 const pricingData = [
-    { service: 'Akashic Records Reading', price: '₹4,000', duration: '30 mins' },
-    { service: 'Crystal Healing', price: '₹1,500', duration: '1 hour' },
-    { service: 'Crystal, Switchwords & Frequency', price: '₹1,200', duration: 'Per session' },
-    { service: 'General Consultation', price: '₹300', duration: '15 mins' },
+    { service: 'Akashic Records Reading', price: '₹499', duration: '30 mins' },
+    { service: 'Crystal Healing', price: '₹499', duration: '1 hour' },
+    { service: 'Crystal, Switchwords & Frequency', price: '₹499', duration: 'Per session' },
+    { service: 'General Consultation', price: '₹499', duration: '15 mins' },
     { service: 'Karmic + Ancestral Healing / Entity Cord Cutting', price: '₹16,000 Onwards', duration: 'Per session' },
-    { service: 'Reiki Healing & Aura Cleansing', price: '₹2,000', duration: 'Per session' },
-    { service: 'Talk Therapy', price: '₹1,000/hr (min 4 sessions) / ₹2,000/hr', duration: '1 hour' },
-    { service: 'Tarot Reading', price: '₹1,500', duration: '30 mins' },
-    { service: 'Vedic Astrology', price: '₹2,000', duration: '30 mins' },
-    { service: 'Vedic Numerology', price: '₹1,500', duration: '30 mins' },
+    { service: 'Reiki Healing & Aura Cleansing', price: '₹499', duration: 'Per session' },
+    { service: 'Talk Therapy', price: '₹499', duration: '1 hour' },
+    { service: 'Tarot Reading', price: '₹499', duration: '30 mins' },
+    { service: 'Vedic Astrology', price: '₹499', duration: '30 mins' },
+    { service: 'Vedic Numerology', price: '₹499', duration: '30 mins' },
 ];
 
 const steps = ['Pay via QR', 'Upload Screenshot', 'Select Time'];
@@ -189,7 +189,7 @@ const Booking = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--color-primary)] pt-32 pb-20 relative overflow-hidden">
+        <div className="min-h-screen bg-[var(--color-primary)] pt-40 pb-20 relative overflow-hidden">
             {/* Background Decor */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--color-secondary)]/5 blur-[120px] rounded-full -z-0" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--color-secondary)]/10 blur-[100px] rounded-full -z-0" />
@@ -255,7 +255,7 @@ const Booking = () => {
                         </div>
                     </motion.div>
                     <p className="text-center text-[var(--color-text-muted)] text-sm mt-6 flex items-center justify-center gap-2">
-                        <span className="animate-pulse">👆</span> Proceed with THE booking C0NFIRMATION
+                        <span className="animate-pulse">👆</span> Proceed with the booking confirmation
                     </p>
                 </section>
 

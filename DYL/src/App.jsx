@@ -71,10 +71,13 @@ const AnimatedRoutes = () => {
   );
 };
 
+import OfferBanner from './components/OfferBanner';
+
 function App() {
   return (
     <Router>
       <div className="bg-[var(--color-primary)] min-h-screen text-[var(--color-text)] font-sans">
+        <OfferBanner />
         <Navbar />
         <AnimatedRoutes />
         <Footer />

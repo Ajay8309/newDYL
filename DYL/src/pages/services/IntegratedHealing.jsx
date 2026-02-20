@@ -81,7 +81,7 @@ const IntegratedHealing = () => {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.4 }}
-                            className="glass p-8 rounded-2xl sticky top-32 border-2 border-[var(--color-secondary)]/40 shadow-[0_0_30px_rgba(212,175,55,0.1)]"
+                            className="glass p-8 rounded-2xl sticky top-40 border-2 border-[var(--color-secondary)]/40 shadow-[0_0_30px_rgba(212,175,55,0.1)]"
                         >
                             <div className="uppercase tracking-widest text-xs font-bold text-[var(--color-secondary)] mb-4 text-center">Most Recommended</div>
                             <h3 className="text-xl font-bold mb-6">Session Details</h3>

@@ -38,9 +38,9 @@ const Navbar = () => {
     return (
         <>
             <motion.nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-5'
+                className={`fixed top-9 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-5'
                     }`}
-                initial={{ y: -100 }}
+                initial={{ y: -136 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
             >
