@@ -16,7 +16,7 @@ const OfferBanner = () => {
             <div className="max-w-[1400px] mx-auto flex items-center justify-center gap-3 text-center">
                 <Sparkles size={16} className="text-[#022C22] shrink-0" />
                 <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.1em] text-[#022C22] leading-tight">
-                    ✨ Special Offer: Flat ₹499 for all services <span className="opacity-60">(excl. Integrated Healing)</span> for first 50 customers! ✨
+                    ✨ Website Launch Offer: Flat ₹499 for all services <span className="opacity-60">(excl. Integrated Healing)</span> for first 50 seekers! ✨
                 </p>
                 <Sparkles size={16} className="text-[#022C22] shrink-0" />
             </div>

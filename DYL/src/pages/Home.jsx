@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import heroBg from '../assets/hero-bg-new.png';
-import { Star, ChevronDown, ChevronUp, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ChevronDown, ChevronUp, ArrowRight, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import UpwardSpiral from '../components/UpwardSpiral';
 
 import tarotCard from '../assets/tarot-card-7c5dj9kqjnwd4cwr.jpg';
@@ -139,11 +139,12 @@ const Home = () => {
                     muted
                     playsInline
                     webkit-playsinline="true"
-                    preload="auto"
+                    preload="metadata"
                     className="absolute inset-0 w-full h-full object-cover md:scale-110 z-0 pointer-events-none"
                     style={{ filter: 'brightness(0.45)' }}
                     poster={heroBg}
                 >
+                    <source src="/heroVid.webm" type="video/webm" />
                     <source src="/heroVid.mp4" type="video/mp4" />
                 </video>
                 <style>{`
@@ -153,11 +154,28 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--color-primary)] z-0" />
 
                 <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+                    {/* Website Launch Offer Banner */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.1 }}
+                        className="mb-8 inline-block"
+                    >
+                        <div className="glass px-6 py-2 rounded-full border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/10 backdrop-blur-md relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                            <p className="text-[var(--color-secondary)] font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs flex items-center gap-2">
+                                <Sparkles size={14} className="animate-pulse" />
+                                Website Launch Offer: Flat <span className="text-white">₹499</span> for first 50 seekers
+                                <Sparkles size={14} className="animate-pulse" />
+                            </p>
+                        </div>
+                    </motion.div>
+
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="uppercase tracking-[0.3em] text-sm text-[var(--color-secondary)] mb-6"
+                        className="uppercase tracking-[0.3em] text-[10px] md:text-sm text-[var(--color-secondary)] mb-6"
                     >
                         No marketing gimmick · Full transparency · Only care &amp; healing
                     </motion.p>

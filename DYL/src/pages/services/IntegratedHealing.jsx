@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Clock, Calendar, CheckCircle, Sparkles } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, CheckCircle, Sparkles, Star } from 'lucide-react';
 import heroImg from '../../assets/yunchuan-luo-7emiteIwfuk-unsplash.jpg'; // Using the nature background as it fits the integrated theme
 
 const IntegratedHealing = () => {
@@ -18,6 +18,18 @@ const IntegratedHealing = () => {
                     <Link to="/services" className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors">
                         <ArrowLeft size={20} /> Back to Services
                     </Link>
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-[var(--color-secondary)]/30 mb-6 w-fit bg-[var(--color-secondary)]/10 shadow-[0_0_15px_rgba(212,175,55,0.2)]"
+                    >
+                        <Sparkles size={16} className="text-[var(--color-secondary)] animate-pulse" />
+                        <span className="text-xs uppercase tracking-[0.25em] text-[var(--color-secondary)] font-bold">
+                            Website Launch Offer - Special Deals
+                        </span>
+                    </motion.div>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -83,6 +95,22 @@ const IntegratedHealing = () => {
                             transition={{ delay: 0.4 }}
                             className="glass p-8 rounded-2xl sticky top-40 border-2 border-[var(--color-secondary)]/40 shadow-[0_0_30px_rgba(212,175,55,0.1)]"
                         >
+                            {/* Launch Offer Banner */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.8 }}
+                                className="glass p-4 rounded-2xl border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 mb-6 text-center relative overflow-hidden group"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                <p className="text-[var(--color-secondary)] font-bold tracking-widest uppercase text-[10px] mb-1">
+                                    Website Launch Offer
+                                </p>
+                                <p className="text-white font-serif font-bold text-sm">
+                                    Special deals for first 50 seekers
+                                </p>
+                            </motion.div>
+
                             <div className="uppercase tracking-widest text-xs font-bold text-[var(--color-secondary)] mb-4 text-center">Most Recommended</div>
                             <h3 className="text-xl font-bold mb-6">Session Details</h3>
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Clock, Calendar, CheckCircle, Sparkles, Hand, ArrowRight, Shield, Zap, Activity, Heart } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, CheckCircle, Sparkles, Hand, ArrowRight, Shield, Zap, Activity, Heart, Star } from 'lucide-react';
 import heroImg from '../../assets/reiki-2.jpg';
 
 const ReikiHealing = () => {
@@ -73,17 +73,31 @@ const ReikiHealing = () => {
                         <span className="uppercase tracking-widest text-xs font-bold">Back to Services</span>
                     </Link>
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/30 mb-6 w-fit bg-emerald-500/10"
-                    >
-                        <Hand size={16} className="text-emerald-400" />
-                        <span className="text-xs uppercase tracking-[0.25em] text-emerald-300">
-                            Universal Energy
-                        </span>
-                    </motion.div>
+                    <div className="flex flex-wrap gap-4 mb-6">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/30 w-fit bg-emerald-500/10"
+                        >
+                            <Hand size={16} className="text-emerald-400" />
+                            <span className="text-xs uppercase tracking-[0.25em] text-emerald-300">
+                                Universal Energy
+                            </span>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-[var(--color-secondary)]/30 w-fit bg-[var(--color-secondary)]/10 shadow-[0_0_15px_rgba(212,175,55,0.2)]"
+                        >
+                            <Sparkles size={16} className="text-[var(--color-secondary)] animate-pulse" />
+                            <span className="text-xs uppercase tracking-[0.25em] text-[var(--color-secondary)] font-bold">
+                                Website Launch Offer - Flat ₹499
+                            </span>
+                        </motion.div>
+                    </div>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -188,6 +202,22 @@ const ReikiHealing = () => {
                             transition={{ delay: 0.6 }}
                             className="sticky top-40 space-y-6"
                         >
+                            {/* Launch Offer Banner */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.8 }}
+                                className="glass p-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 text-center relative overflow-hidden group"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                <p className="text-emerald-400 font-bold tracking-widest uppercase text-[10px] mb-1">
+                                    Website Launch Offer
+                                </p>
+                                <p className="text-white font-serif font-bold text-sm">
+                                    Flat <span className="text-emerald-400">₹499</span> for first 50 seekers
+                                </p>
+                            </motion.div>
+
                             <div className="glass p-8 rounded-[2rem] border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.1)] relative overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent pointer-events-none" />
 
@@ -209,7 +239,10 @@ const ReikiHealing = () => {
                                         </div>
                                         <div>
                                             <div className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">Fee</div>
-                                            <div className="font-bold">₹499</div>
+                                            <div className="flex flex-col">
+                                                <span className="text-xs text-[var(--color-text-muted)] line-through opacity-50">₹1,800</span>
+                                                <span className="font-bold">₹499</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

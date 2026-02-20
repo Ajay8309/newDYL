@@ -7,16 +7,16 @@ import { Check, Calendar, Upload, QrCode, Clock, Shield, Sparkles, Heart, Zap, X
 import qrCodeImg from '../assets/qr.png';
 
 const pricingData = [
-    { service: 'Akashic Records Reading', price: '₹499', duration: '30 mins' },
-    { service: 'Crystal Healing', price: '₹499', duration: '1 hour' },
-    { service: 'Crystal, Switchwords & Frequency', price: '₹499', duration: 'Per session' },
-    { service: 'General Consultation', price: '₹499', duration: '15 mins' },
+    { service: 'Akashic Records Reading', original: '₹2,100', price: '₹499', duration: '30 mins' },
+    { service: 'Crystal Healing', original: '₹1,500', price: '₹499', duration: '1 hour' },
+    { service: 'Crystal, Switchwords & Frequency', original: '₹1,200', price: '₹499', duration: 'Per session' },
+    { service: 'General Consultation', original: '₹800', price: '₹499', duration: '15 mins' },
     { service: 'Karmic + Ancestral Healing / Entity Cord Cutting', price: '₹16,000 Onwards', duration: 'Per session' },
-    { service: 'Reiki Healing & Aura Cleansing', price: '₹499', duration: 'Per session' },
-    { service: 'Talk Therapy', price: '₹499', duration: '1 hour' },
-    { service: 'Tarot Reading', price: '₹499', duration: '30 mins' },
-    { service: 'Vedic Astrology', price: '₹499', duration: '30 mins' },
-    { service: 'Vedic Numerology', price: '₹499', duration: '30 mins' },
+    { service: 'Reiki Healing & Aura Cleansing', original: '₹1,800', price: '₹499', duration: 'Per session' },
+    { service: 'Talk Therapy', original: '₹2,500', price: '₹499', duration: '1 hour' },
+    { service: 'Tarot Reading', original: '₹1,500', price: '₹499', duration: '30 mins' },
+    { service: 'Vedic Astrology', original: '₹2,100', price: '₹499', duration: '30 mins' },
+    { service: 'Vedic Numerology', original: '₹2,100', price: '₹499', duration: '30 mins' },
 ];
 
 const steps = ['Pay via QR', 'Upload Screenshot', 'Select Time'];
@@ -229,6 +229,22 @@ const Booking = () => {
                         <div className="w-px h-4 bg-white/10" />
                         <div className="flex items-center gap-2"><Zap size={16} className="text-[var(--color-secondary)]" /><span>Instant Confirmation</span></div>
                     </motion.div>
+
+                    {/* Launch Offer Banner */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="mt-12 max-w-2xl mx-auto px-6 py-4 rounded-2xl bg-gradient-to-r from-[var(--color-secondary)]/20 to-[var(--color-secondary)]/5 border border-[var(--color-secondary)]/30 backdrop-blur-md relative overflow-hidden group"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                        <p className="text-[var(--color-secondary)] font-bold tracking-widest uppercase text-xs mb-1 flex items-center justify-center gap-2">
+                            <Sparkles size={14} className="animate-pulse" /> Website Launch Offer <Sparkles size={14} className="animate-pulse" />
+                        </p>
+                        <h3 className="text-xl md:text-2xl font-serif font-bold text-white">
+                            Flat <span className="text-[var(--color-secondary)]">₹499</span> for the first 50 seekers
+                        </h3>
+                    </motion.div>
                 </motion.div>
 
                 {/* ── Pricing Table ── */}
@@ -248,7 +264,12 @@ const Booking = () => {
                                     <span className={`font-medium transition-colors text-lg ${selectedService?.service === item.service ? 'text-[var(--color-secondary)] font-bold' : 'text-white group-hover:text-[var(--color-secondary)]'}`}>{item.service}</span>
                                     <div className="flex md:contents justify-between items-center mt-2 md:mt-0">
                                         <span className="text-[var(--color-text-muted)] flex items-center gap-2 text-sm md:text-base"><Clock size={16} className="text-[var(--color-secondary)]/50" /> {item.duration}</span>
-                                        <span className="text-right font-sans font-bold text-xl text-[var(--color-secondary)]">{item.price}</span>
+                                        <div className="text-right flex flex-col items-end">
+                                            {item.original && (
+                                                <span className="text-[var(--color-text-muted)] line-through text-xs mb-0.5 opacity-50">{item.original}</span>
+                                            )}
+                                            <span className="font-sans font-bold text-xl text-[var(--color-secondary)]">{item.price}</span>
+                                        </div>
                                     </div>
                                 </motion.div>
                             ))}
@@ -379,10 +400,15 @@ const Booking = () => {
                                                     {selectedService.duration}
                                                 </span>
                                                 <span className="w-1 h-1 rounded-full bg-[var(--color-secondary)]/40" />
-                                                <span className="flex items-center gap-1 px-3 py-1 rounded-full text-sm font-bold"
-                                                    style={{ background: 'rgba(228,154,6,0.1)', border: '1px solid rgba(228,154,6,0.2)', color: 'var(--color-secondary)' }}>
-                                                    {selectedService.price}
-                                                </span>
+                                                <div className="flex items-center gap-2 px-3 py-1 rounded-full"
+                                                    style={{ background: 'rgba(228,154,6,0.1)', border: '1px solid rgba(228,154,6,0.2)' }}>
+                                                    {selectedService.original && (
+                                                        <span className="text-[var(--color-text-muted)] line-through text-xs opacity-50">{selectedService.original}</span>
+                                                    )}
+                                                    <span className="text-sm font-bold text-[var(--color-secondary)]">
+                                                        {selectedService.price}
+                                                    </span>
+                                                </div>
                                             </motion.div>
                                         </div>
 
