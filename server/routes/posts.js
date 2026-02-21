@@ -1,22 +1,11 @@
 import express from 'express';
 import Post from '../models/Post.js';
 import jwt from 'jsonwebtoken';
+import { verifyToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Middleware to verify token
-const verifyToken = (req, res, next) => {
-    const token = req.header('Authorization');
-    if (!token) return res.status(401).json({ message: 'Access Denied' });
-
-    try {
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = verified;
-        next();
-    } catch (error) {
-        res.status(400).json({ message: 'Invalid Token' });
-    }
-};
+// verifyToken moved to ../middleware/auth.js
 
 // GET all posts
 router.get('/', async (req, res) => {

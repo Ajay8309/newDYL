@@ -1,8 +1,22 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://decodeyourlifestyle-modern-backend.onrender.com'
+    baseURL: import.meta.env.MODE === 'production' ? '' : 'http://localhost:5000'
 });
+
+// Request interceptor for adding auth token
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = token;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
 
 export const getImageUrl = (imagePath) => {
     if (!imagePath) return null;

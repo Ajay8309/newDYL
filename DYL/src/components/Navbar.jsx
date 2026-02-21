@@ -35,6 +35,8 @@ const Navbar = () => {
             : 'text-white/70 hover:text-white'
         }`;
 
+    if (location.pathname.startsWith('/admin')) return null;
+
     return (
         <>
             <motion.nav

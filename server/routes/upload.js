@@ -2,6 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import { Readable } from 'stream';
 import { getBucket } from '../utils/gridfsBucket.js';
+import { verifyToken } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -13,8 +14,8 @@ const upload = multer({
 });
 
 // @route POST /api/upload
-// @desc  Uploads file to DB
-router.post('/', upload.single('image'), async (req, res) => {
+// @desc  Uploads file to DB (Protected)
+router.post('/', verifyToken, upload.single('image'), async (req, res) => {
     console.log("Receiving upload request...");
     try {
         if (!req.file) {

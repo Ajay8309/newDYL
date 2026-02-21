@@ -74,11 +74,7 @@ const ArticleEditor = () => {
         uploadData.append('image', imageFile);
 
         try {
-            const res = await api.post('/api/upload', uploadData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
+            const res = await api.post('/api/upload', uploadData);
             return res.data; // Returns the URL
         } catch (error) {
             console.error("Image upload failed:", error);
@@ -100,15 +96,11 @@ const ArticleEditor = () => {
             }
 
             const postData = { ...formData, image: imageUrl };
-            const token = localStorage.getItem('token');
-            const config = {
-                headers: { Authorization: token }
-            };
 
             if (isEditing) {
-                await api.put(`/api/posts/${id}`, postData, config);
+                await api.put(`/api/posts/${id}`, postData);
             } else {
-                await api.post('/api/posts', postData, config);
+                await api.post('/api/posts', postData);
             }
             navigate('/admin/dashboard');
         } catch (error) {

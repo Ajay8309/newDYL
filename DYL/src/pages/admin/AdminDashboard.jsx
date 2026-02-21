@@ -24,10 +24,9 @@ const AdminDashboard = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const token = localStorage.getItem('token');
             const [postsRes, bookingsRes] = await Promise.all([
                 api.get('/api/posts'),
-                api.get('/api/bookings', { headers: { Authorization: token } })
+                api.get('/api/bookings')
             ]);
             setPosts(Array.isArray(postsRes.data) ? postsRes.data : []);
             setBookings(Array.isArray(bookingsRes.data) ? bookingsRes.data : []);
@@ -43,10 +42,7 @@ const AdminDashboard = () => {
     const handleDeletePost = async (id) => {
         if (window.confirm('Are you sure you want to delete this article?')) {
             try {
-                const token = localStorage.getItem('token');
-                await api.delete(`/api/posts/${id}`, {
-                    headers: { Authorization: token }
-                });
+                await api.delete(`/api/posts/${id}`);
                 setPosts(posts.filter(post => post._id !== id));
             } catch (error) {
                 console.error("Error deleting post:", error);
@@ -56,10 +52,7 @@ const AdminDashboard = () => {
 
     const handleUpdateBookingStatus = async (id, status) => {
         try {
-            const token = localStorage.getItem('token');
-            const res = await api.patch(`/api/bookings/${id}`, { status }, {
-                headers: { Authorization: token }
-            });
+            const res = await api.patch(`/api/bookings/${id}`, { status });
             setBookings(bookings.map(b => b._id === id ? res.data : b));
         } catch (error) {
             console.error("Error updating booking:", error);
@@ -206,6 +199,7 @@ const AdminDashboard = () => {
                                     <th className="px-8 py-6">User Details</th>
                                     <th className="px-8 py-6">Session Info</th>
                                     <th className="px-8 py-6">Payment Proof</th>
+                                    <th className="px-8 py-6">Transaction ID</th>
                                     <th className="px-8 py-6">Status</th>
                                     <th className="px-8 py-6 text-right">Actions</th>
                                 </tr>
@@ -237,6 +231,9 @@ const AdminDashboard = () => {
                                                 >
                                                     <Eye size={14} /> View SS
                                                 </button>
+                                            </td>
+                                            <td className="px-8 py-6">
+                                                <div className="text-xs font-mono text-white/60 bg-white/5 px-2 py-1 rounded border border-white/5">{booking.transactionId || 'N/A'}</div>
                                             </td>
                                             <td className="px-8 py-6 text-sm">
                                                 <span className={`px-3 py-1 rounded-full text-[9px] uppercase font-bold tracking-widest border ${booking.status === 'verified'
