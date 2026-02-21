@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet()); // Add security headers
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
-        ? ['https://decodeyourlifestyle.com'] // Replace with actual production domain
+        ? ['https://decodeyourlifestyle.in', 'https://www.decodeyourlifestyle.in'] // Replace with actual production domain
         : ['http://localhost:5173', 'http://localhost:3000'],
     credentials: true
 }));
