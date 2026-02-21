@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: import.meta.env.MODE === 'production' ? '' : 'http://localhost:5000'
+    baseURL: import.meta.env.MODE === 'production'
+        ? 'https://decodeyourlifestyle-modern-backend.onrender.com'
+        : 'http://localhost:5000'
 });
 
 // Request interceptor for adding auth token

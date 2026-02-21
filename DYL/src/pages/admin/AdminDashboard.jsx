@@ -199,7 +199,6 @@ const AdminDashboard = () => {
                                     <th className="px-8 py-6">User Details</th>
                                     <th className="px-8 py-6">Session Info</th>
                                     <th className="px-8 py-6">Payment Proof</th>
-                                    <th className="px-8 py-6">Transaction ID</th>
                                     <th className="px-8 py-6">Status</th>
                                     <th className="px-8 py-6 text-right">Actions</th>
                                 </tr>
@@ -231,9 +230,6 @@ const AdminDashboard = () => {
                                                 >
                                                     <Eye size={14} /> View SS
                                                 </button>
-                                            </td>
-                                            <td className="px-8 py-6">
-                                                <div className="text-xs font-mono text-white/60 bg-white/5 px-2 py-1 rounded border border-white/5">{booking.transactionId || 'N/A'}</div>
                                             </td>
                                             <td className="px-8 py-6 text-sm">
                                                 <span className={`px-3 py-1 rounded-full text-[9px] uppercase font-bold tracking-widest border ${booking.status === 'verified'

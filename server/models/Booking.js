@@ -9,6 +9,10 @@ const bookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: String,
+        required: true
+    },
     service: {
         type: String,
         required: true
@@ -22,14 +26,6 @@ const bookingSchema = new mongoose.Schema({
         required: true
     },
     screenshotUrl: {
-        type: String,
-        required: true
-    },
-    phone: {
-        type: String,
-        required: true
-    },
-    transactionId: {
         type: String,
         required: true
     },

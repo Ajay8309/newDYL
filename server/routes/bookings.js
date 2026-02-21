@@ -9,9 +9,9 @@ const router = express.Router();
 // @desc  Create a new booking (Public)
 router.post('/', async (req, res) => {
     try {
-        const { name, email, phone, transactionId, service, price, duration, screenshotUrl } = req.body;
+        const { name, email, phone, service, price, duration, screenshotUrl } = req.body;
 
-        if (!name || !email || !phone || !transactionId || !service || !price || !duration || !screenshotUrl) {
+        if (!name || !email || !phone || !service || !price || !duration || !screenshotUrl) {
             return res.status(400).json({ message: "Please provide all required fields" });
         }
 
@@ -19,7 +19,6 @@ router.post('/', async (req, res) => {
             name,
             email,
             phone,
-            transactionId,
             service,
             price,
             duration,

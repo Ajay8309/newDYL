@@ -28,7 +28,7 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#022C22] flex items-center justify-center px-6 relative overflow-hidden">
+        <div className="min-h-screen bg-[#022C22] flex items-center justify-center pt-32 pb-12 px-6 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--color-secondary)]/10 rounded-full blur-[120px]" />
