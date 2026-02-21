@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Edit, Trash2, LogOut, Check, X, Eye, FileText, ClipboardList, Loader } from 'lucide-react';
+import { Plus, Edit, Trash2, LogOut, Check, X, Eye, FileText, ClipboardList, Loader, Phone } from 'lucide-react';
 import api, { getImageUrl } from '../../utils/api';
 
 const AdminDashboard = () => {
@@ -214,10 +214,13 @@ const AdminDashboard = () => {
                                             className="group hover:bg-white/[0.02] transition-colors"
                                         >
                                             <td className="px-8 py-6">
-                                                <div className="font-bold text-white">{booking.name}</div>
-                                                <div className="text-xs text-white/40">{booking.email}</div>
-                                                <div className="text-xs text-white/40">{booking.phone}</div>
-                                                <div className="text-[9px] text-white/20 mt-1 uppercase tracking-tighter">Ordered {booking.createdAt ? new Date(booking.createdAt).toLocaleDateString() : 'N/A'}</div>
+                                                <div className="font-bold text-white mb-0.5">{booking.name}</div>
+                                                <div className="text-xs text-white/50 mb-1.5 underline underline-offset-2 decoration-white/10">{booking.email}</div>
+                                                <div className="flex items-center gap-2 text-xs text-[var(--color-secondary)] font-bold bg-[var(--color-secondary)]/10 w-fit px-2 py-0.5 rounded-md border border-[var(--color-secondary)]/20">
+                                                    <Phone size={12} className="shrink-0" />
+                                                    {booking.phone || <span className="opacity-40 italic font-normal">No phone provided</span>}
+                                                </div>
+                                                <div className="text-[9px] text-white/20 mt-2 uppercase tracking-tighter">Ordered {booking.createdAt ? new Date(booking.createdAt).toLocaleDateString() : 'N/A'}</div>
                                             </td>
                                             <td className="px-8 py-6">
                                                 <div className="text-[var(--color-secondary)] font-medium">{booking.service}</div>
