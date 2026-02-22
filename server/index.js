@@ -54,9 +54,37 @@ app.use('/api/bookings', bookingRoutes);
 const clientDistPath = path.join(__dirname, '../DYL/dist');
 const clientIndexHtml = path.join(clientDistPath, 'index.html');
 
-if (process.env.NODE_ENV === 'production' && fs.existsSync(clientIndexHtml)) {
-    // Set static folder
-    app.use(express.static(clientDistPath));
+console.log('Static configuration:');
+console.log('- __dirname:', __dirname);
+console.log('- clientDistPath:', clientDistPath);
+console.log('- index.html exists:', fs.existsSync(clientIndexHtml));
+
+if (process.env.NODE_ENV === 'production') {
+    // We try to serve static files if the directory exists, even if index.html isn't there yet
+    if (fs.existsSync(clientDistPath)) {
+        app.use(express.static(clientDistPath));
+    }
+
+    // Explicitly serve sitemap.xml and robots.txt
+    app.get('/sitemap.xml', (req, res) => {
+        const sitemapPath = path.join(clientDistPath, 'sitemap.xml');
+        if (fs.existsSync(sitemapPath)) {
+            res.header('Content-Type', 'application/xml');
+            res.sendFile(sitemapPath);
+        } else {
+            res.status(404).send('Sitemap not found');
+        }
+    });
+
+    app.get('/robots.txt', (req, res) => {
+        const robotsPath = path.join(clientDistPath, 'robots.txt');
+        if (fs.existsSync(robotsPath)) {
+            res.header('Content-Type', 'text/plain');
+            res.sendFile(robotsPath);
+        } else {
+            res.status(404).send('Robots.txt not found');
+        }
+    });
 
     app.get(/.*/, (req, res) => {
         // Skip API routes
