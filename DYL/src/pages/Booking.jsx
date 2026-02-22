@@ -188,10 +188,14 @@ const Booking = () => {
     };
     const prevStep = () => { if (currentStep > 0) setCurrentStep(prev => prev - 1); };
 
-    // ── Modal close resets step
+    // ── Modal close resets all states
     const handleClose = () => {
         setSelectedService(null);
         setCurrentStep(0);
+        setScreenshotUrl('');
+        setUserData({ name: '', email: '', phone: '', transactionId: '' });
+        setCalendlyBooked(false);
+        setUploadError('');
     };
 
     return (
