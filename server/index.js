@@ -23,9 +23,9 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(
-  helmet({
-    crossOriginResourcePolicy: false,
-  })
+    helmet({
+        crossOriginResourcePolicy: false,
+    })
 );
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
@@ -63,6 +63,12 @@ if (process.env.NODE_ENV === 'production' && fs.existsSync(clientIndexHtml)) {
         if (req.path.startsWith('/api')) {
             return res.status(404).json({ message: 'API endpoint not found' });
         }
+
+        // Skip common static file extensions to prevent serving index.html for missing assets
+        if (req.path.match(/\.(xml|txt|png|jpg|jpeg|gif|svg|ico|css|js|mp4|webm)$/) || req.path.includes('/assets/')) {
+            return res.status(404).send('Not found');
+        }
+
         res.sendFile(clientIndexHtml);
     });
 } else {
