@@ -14,8 +14,8 @@ const upload = multer({
 });
 
 // @route POST /api/upload
-// @desc  Uploads file to DB (Protected)
-router.post('/', verifyToken, upload.single('image'), async (req, res) => {
+// @desc  Uploads file to DB (Public for bookings)
+router.post('/', upload.single('image'), async (req, res) => {
     console.log("Receiving upload request...");
     try {
         if (!req.file) {

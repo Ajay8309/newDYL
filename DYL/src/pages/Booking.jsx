@@ -143,13 +143,19 @@ const Booking = () => {
         setUploadError('');
 
         try {
-            // Compress image before upload
-            const compressedBlob = await compressImage(file);
+            let fileToUpload = file;
+
+            // Only compress if it's an image
+            if (file.type.startsWith('image/')) {
+                fileToUpload = await compressImage(file);
+            }
 
             const uploadData = new FormData();
-            uploadData.append('image', compressedBlob, file.name);
+            uploadData.append('image', fileToUpload, file.name);
 
-            const res = await api.post('/api/upload', uploadData, { headers: { 'Content-Type': 'multipart/form-data' } });
+            const res = await api.post('/api/upload', uploadData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
             setScreenshotUrl(res.data);
             // nextStep(); // Removed auto-navigation
         } catch (err) {
