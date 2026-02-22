@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import api from '../utils/api';
+import { compressImage } from '../utils/imageCompression';
 import { Check, Calendar, Upload, QrCode, Clock, Shield, Sparkles, Heart, Zap, X, Loader } from 'lucide-react';
 import qrCodeImg from '../assets/qr.png';
 
@@ -140,9 +141,14 @@ const Booking = () => {
         if (!file) return;
         setUploading(true);
         setUploadError('');
-        const uploadData = new FormData();
-        uploadData.append('image', file);
+
         try {
+            // Compress image before upload
+            const compressedBlob = await compressImage(file);
+
+            const uploadData = new FormData();
+            uploadData.append('image', compressedBlob, file.name);
+
             const res = await api.post('/api/upload', uploadData, { headers: { 'Content-Type': 'multipart/form-data' } });
             setScreenshotUrl(res.data);
             // nextStep(); // Removed auto-navigation

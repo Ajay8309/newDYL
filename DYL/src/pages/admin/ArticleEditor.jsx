@@ -4,6 +4,7 @@ import { ArrowLeft, Save, Loader, Upload, X } from 'lucide-react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import api from '../../utils/api';
+import { compressImage } from '../../utils/imageCompression';
 
 const ArticleEditor = () => {
     const { id } = useParams();
@@ -70,10 +71,13 @@ const ArticleEditor = () => {
     const uploadImage = async () => {
         if (!imageFile) return formData.image;
 
-        const uploadData = new FormData();
-        uploadData.append('image', imageFile);
-
         try {
+            // Compress the image before uploading
+            const compressedBlob = await compressImage(imageFile);
+
+            const uploadData = new FormData();
+            uploadData.append('image', compressedBlob, imageFile.name);
+
             const res = await api.post('/api/upload', uploadData);
             return res.data; // Returns the URL
         } catch (error) {
