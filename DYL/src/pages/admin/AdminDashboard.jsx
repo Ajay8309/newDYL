@@ -75,7 +75,7 @@ const AdminDashboard = () => {
     const pendingCount = Array.isArray(bookings) ? bookings.filter(b => b.status === 'pending').length : 0;
 
     return (
-        <div className="min-h-screen bg-[#022C22] pt-32 px-8 pb-20 relative overflow-hidden text-white">
+        <div className="min-h-screen bg-[#022C22] pt-48 px-8 pb-20 relative overflow-hidden text-white">
             {/* Background Accent */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-secondary)]/5 rounded-full blur-[120px] -mr-64 -mt-64" />
 

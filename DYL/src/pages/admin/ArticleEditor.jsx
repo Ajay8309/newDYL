@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Save, Loader, Upload, X } from 'lucide-react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
@@ -127,11 +127,11 @@ const ArticleEditor = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--color-primary)] px-8 pt-32 pb-12">
+        <div className="min-h-screen bg-[var(--color-primary)] px-8 pt-48 pb-12">
             <div className="max-w-4xl mx-auto">
-                <button onClick={() => navigate('/admin/dashboard')} className="flex items-center gap-2 text-[var(--color-text-muted)] hover:text-white mb-8 cursor-pointer">
+                <Link to="/admin/dashboard" className="relative z-10 flex items-center gap-2 text-[var(--color-text-muted)] hover:text-white mb-8">
                     <ArrowLeft size={18} /> Back into Dashboard
-                </button>
+                </Link>
 
                 <h1 className="text-3xl font-serif font-bold mb-8">
                     {isEditing ? 'Edit Article' : 'New Article'}
