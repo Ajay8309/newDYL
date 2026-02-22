@@ -51,12 +51,19 @@ const AdminDashboard = () => {
     };
 
     const handleUpdateBookingStatus = async (id, status) => {
+        // Optimistic UI Update: update state before server response
+        const originalBookings = [...bookings];
+        setBookings(bookings.map(b => b._id === id ? { ...b, status } : b));
+
         try {
             const res = await api.patch(`/api/bookings/${id}`, { status });
+            // Update with actual server data once response arrives
             setBookings(bookings.map(b => b._id === id ? res.data : b));
         } catch (error) {
             console.error("Error updating booking:", error);
-            alert("Failed to update status");
+            // Revert state if the API call fails
+            setBookings(originalBookings);
+            alert("Failed to update status. Please try again.");
         }
     };
 
