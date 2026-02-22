@@ -127,7 +127,7 @@ const ArticleEditor = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[var(--color-primary)] px-8 pt-48 pb-12">
+        <div className="min-h-screen bg-[var(--color-primary)] px-8 pt-40 pb-12">
             <div className="max-w-4xl mx-auto">
                 <Link to="/admin/dashboard" className="relative z-10 flex items-center gap-2 text-[var(--color-text-muted)] hover:text-white mb-8">
                     <ArrowLeft size={18} /> Back into Dashboard
