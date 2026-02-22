@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -25,6 +26,7 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ArticleEditor from './pages/admin/ArticleEditor';
 import ProtectedRoute from './components/ProtectedRoute';
+import OfferBanner from './components/OfferBanner';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -71,20 +73,20 @@ const AnimatedRoutes = () => {
   );
 };
 
-import OfferBanner from './components/OfferBanner';
-
 function App() {
   return (
-    <Router>
-      <div className="bg-[var(--color-primary)] min-h-screen text-[var(--color-text)] font-sans">
-        <OfferBanner />
-        <Navbar />
-        <AnimatedRoutes />
-        <Footer />
-        <WhatsAppButton />
-        <ScrollToTop />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <div className="bg-[var(--color-primary)] min-h-screen text-[var(--color-text)] font-sans">
+          <OfferBanner />
+          <Navbar />
+          <AnimatedRoutes />
+          <Footer />
+          <WhatsAppButton />
+          <ScrollToTop />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 

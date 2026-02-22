@@ -95,6 +95,8 @@ const reviews = [
     },
 ];
 
+import SEO from '../components/SEO';
+
 const Home = () => {
     const scrollRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: scrollRef, offset: ['start start', 'end end'] });
@@ -128,6 +130,28 @@ const Home = () => {
 
     return (
         <div className="min-h-screen bg-[var(--color-primary)] overflow-x-hidden">
+            <SEO
+                title="Decode Your Life | Science + Spirituality Transformation"
+                description="Decode your life's patterns through Science and Spirituality. We offer Tarot Guidance, Reiki Healing, Akashic Records, and more for deep personal transformation."
+                keywords="consciousness decoding, tarot guidance, science and spirituality, life patterns, reiki healing, akashic records reading"
+                schemaData={{
+                    "@context": "https://schema.org",
+                    "@type": "HealthAndBeautyBusiness",
+                    "name": "Decode Your Life",
+                    "description": "Science meets spirituality for deep life transformation.",
+                    "url": "https://www.decodeyourlife.in",
+                    "founder": {
+                        "@type": "Person",
+                        "name": "Aashna Ahuja"
+                    },
+                    "offers": [
+                        { "@type": "Offer", "name": "Tarot Guidance" },
+                        { "@type": "Offer", "name": "Astrology Reading" },
+                        { "@type": "Offer", "name": "Akashic Records" },
+                        { "@type": "Offer", "name": "Reiki Healing" }
+                    ]
+                }}
+            />
 
             {/* ═══════════════════════════════════════════
           1 · HERO

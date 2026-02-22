@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar, Share2 } from 'lucide-react';
 import api, { getImageUrl } from '../utils/api';
+import SEO from '../components/SEO';
 
 const BlogPost = () => {
     const { id } = useParams();
@@ -56,6 +57,12 @@ const BlogPost = () => {
 
     return (
         <div className="min-h-screen bg-[var(--color-primary)] pt-40 pb-24">
+            <SEO
+                title={post.title}
+                description={post.excerpt}
+                image={getImageUrl(post.image)}
+                type="article"
+            />
             <article className="container mx-auto px-6 max-w-3xl">
 
                 {/* Back */}

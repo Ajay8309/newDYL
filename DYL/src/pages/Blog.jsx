@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Clock, ArrowRight } from "lucide-react";
 import api, { getImageUrl } from "../utils/api";
+import SEO from "../components/SEO";
 
 const Blog = () => {
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -40,6 +41,11 @@ const Blog = () => {
 
     return (
         <div className="min-h-screen bg-[var(--color-primary)] pt-40 pb-24">
+            <SEO
+                title="Client Stories & Spiritual Insights Blog"
+                description="Read inspiring stories of transformation and deep insights into soul healing, consciousness, and ancient spiritual technologies."
+                keywords="spiritual blog, healing stories, consciousness insights, tarot experiences, reiki transformations"
+            />
             <div className="container mx-auto px-6 max-w-5xl">
 
                 {/* Header */}

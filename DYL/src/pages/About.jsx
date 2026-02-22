@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import mentorImage from '../assets/mentorr.png';
 import { Brain, Heart, Zap, Sparkles, Star, ArrowRight, Award, Users, MapPin } from 'lucide-react';
+import SEO from '../components/SEO';
 
 /* ── Data ──────────────────────────────────────────────── */
 const certifications = [
@@ -50,6 +51,11 @@ const GoldDivider = ({ label }) => (
 const About = () => {
     return (
         <div className="min-h-screen bg-[var(--color-primary)] pt-40">
+            <SEO
+                title="About Aashna Ahuja | Psychic Mentor & Spiritual Guide"
+                description="Meet Aashna Ahuja, the mentor behind Decode Your Life. From corporate leadership to spiritual guiding, learn about her journey and the DYL method."
+                keywords="Aashna Ahuja, psychic mentor, spiritual guide, DYL method, consciousness shifting"
+            />
 
             {/* ══ HERO SPLIT ══════════════════════════════════════════ */}
             <section className="max-w-[1200px] mx-auto px-6 md:px-8 pt-12 md:pt-16 pb-8 grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 md:gap-12 items-start">

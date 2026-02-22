@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Sparkles, Moon, Sun, Stars, Zap, Gem, Layers, Wind, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const services = [
     {
@@ -88,6 +89,11 @@ const itemVariants = {
 const Services = () => {
     return (
         <div className="min-h-screen bg-[var(--color-primary)] pt-40 pb-20">
+            <SEO
+                title="Our Services | Holistic Healing & Spiritual Guidance"
+                description="Explore our range of spiritual services including Tarot, Vedic Astrology, Akashic Records, Reiki, and Integrated Healing for deep soul transformation."
+                keywords="tarot guidance, vedic astrology reading, akashic records, reiki healing, gemstone guidance, integrated healing"
+            />
             <div className="container mx-auto px-6">
 
                 {/* Header */}
