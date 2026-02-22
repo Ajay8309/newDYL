@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save, Loader, Upload, X } from 'lucide-react';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
-import api from '../../utils/api';
+import api, { getImageUrl } from '../../utils/api';
 import { compressImage } from '../../utils/imageCompression';
 
 const ArticleEditor = () => {
@@ -38,7 +38,7 @@ const ArticleEditor = () => {
             const res = await api.get(`/api/posts/${id}`);
             setFormData(res.data);
             if (res.data.image) {
-                setImagePreview(res.data.image);
+                setImagePreview(getImageUrl(res.data.image));
             }
         } catch (error) {
             console.error("Error getting document:", error);
@@ -185,7 +185,7 @@ const ArticleEditor = () => {
 
                         {imagePreview ? (
                             <div className="relative w-full h-64 rounded-xl overflow-hidden mb-4 group border border-white/10">
-                                <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                                <img src={getImageUrl(imagePreview)} alt="Preview" className="w-full h-full object-cover" />
                                 <button
                                     type="button"
                                     onClick={removeImage}
